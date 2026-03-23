@@ -1,0 +1,436 @@
+@font-face {
+    font-family: 'Russo';
+    src: url(../fonts/RussoOne-Regular.ttf);
+}
+
+/********* No :Root Variáveis escopo global *************/
+:root {
+    --font-text: "Poppins", sans-serif;
+    --font-title: "Russo", sans-serif;
+    --font-reserva: "Montserrat", sans-serif;
+    --font-orbitron: "Orbitron", sans-serif;
+    --color-light: #E6F1F1;
+    --color-ciano-300: #04d6cf;
+    --color-blue-200: #03b3ff;
+    --color-green-900: #0a2e2f;
+    --color-green-500: #10af9d;
+    --color-pink: #ff0066;
+    --color-pinkpurple: #fa07d2;
+    --color-purple: #ac00bc;
+    --color-violet: #280754;
+    --color-blueblack-900: #0d1117;
+    --color-yellow: #ffff00;
+    --bg-video: rgba(20, 15, 43, 0.8);
+}
+
+/************* Reset CSS ***********/
+* {
+    margin: 0;
+    /* padding: 0; */
+    box-sizing: border-box;
+    font-family: var(--font-text)
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-orbitron);
+}
+
+a { text-decoration: none; }
+
+ul, ol { list-style: none; }
+
+.color-ciano-300 { color: var(--color-ciano-300); }
+.color-purple { color: var(--color-purple); }
+.color-blue-200 { color: var(--color-blue-200); }
+.color-pinkp { color: var(--color-pinkpurple)}
+.color-pink { color: var(--color-pink); }
+
+.header-page {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 80px;
+}
+
+.header-page::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--bg-video);
+    z-index: -1;
+    
+}
+
+.header-page h1 {
+    font-size: 36px;
+    color: var(--color-light);
+}
+
+/*************** ícone do h1 - controle ***********/
+.controller {
+    color: var(--color-ciano-300);
+    position: relative;
+    top: 2px
+}
+
+/********* alinhamento do menu **********/
+.header-menu {
+    display: flex;
+    gap: 30px;
+}
+
+.header-menu {
+    display: flex;
+    gap: 30px;
+
+    padding: 12px 30px;
+    border-radius: 40px;
+
+    background: rgba(255, 255, 255, 0.057);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(174, 0, 255, 0.2);
+}
+
+/******** opções do menu ***************/
+.item-menu {
+    color: var(--color-light);
+    font-weight: 550;
+    font-size: 14px;
+}
+
+.item-menu:hover {
+    color: var(--color-ciano-300)
+}
+
+
+
+/*********** formatação do video  **************/
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/********** hero (mensagem central) *************/
+.hero {
+    height: calc(100dvh - 80px);
+    color: var(--color-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+}
+
+.hero h2 {
+    max-width:  1000px;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    text-align: center;
+    padding-inline: 20px;
+    text-wrap: balance;
+}
+
+.hero h2 span {
+    font-family: var(--font-orbitron);
+}
+
+.hero h3 {
+    max-width:  1000px;
+    font-size: clamp(1.5rem, 1vw, 3rem);
+    text-align: center;
+    padding-inline: 20px;
+    text-wrap: balance;
+}
+
+.hero h3 {
+    font-family: var(--font-orbitron);
+}
+
+/********** botões do hero ***********/
+.btn-group {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-link {
+    border: 2px solid var(--color-ciano-300);
+    min-width: 180px;
+    padding: 10px 30px;
+    border-radius: 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.btn-link::after {
+    content: '';
+    width: 0;
+    height: 100%;
+    background-color: var(--color-ciano-300);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 80px;
+    filter: blur(10px);
+    opacity: .5;
+    z-index: -1;
+    transition: .5s;
+}
+
+.btn-link:hover::after {
+    width: 100%;
+}
+
+.btn-link a {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--color-light);
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: var(--color-ciano-300);
+    border: 2px solid var(--color-ciano-300);
+}
+
+.btn-primary a {
+    color: #0D1117; /* texto escuro pra dar contraste */
+}
+
+.btn-primary:hover {
+    filter: brightness(1.1);
+}
+
+
+
+/******************** Fim botões do hero ************/
+
+
+
+/********** Cards - Imagens dos Jogos **************************/
+
+.games {
+     background: linear-gradient(
+        to bottom,
+        var(--color-violet),
+        var(--color-blueblack-900) 20%
+    );
+    padding: 80px 50px;
+}
+
+.games-title {
+    font-size: clamp(28px, 3vw, 32px);
+    text-align: center;
+    margin: 60px 0 50px;
+    position: relative;
+    font-weight: 600;
+    letter-spacing: 2px;
+
+    background: linear-gradient(70deg, var(--color-ciano-300), var(--color-ciano-300));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    aspect-ratio: 3 / 4;
+    border-radius: 8px;
+    transition: .3s;
+    overflow: hidden;
+    position: relative;
+    animation: viewAnimation both;
+    animation-timeline: view(70% 20%);
+}
+
+.card:hover {
+    box-shadow: 1px 1px 10px var(--color-ciano-300);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(2, 247, 255, 0.667);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 8px;
+    opacity: .7;
+    transition: .3s;
+}
+
+.card:hover img {
+    opacity: 1;
+    scale: 1.1;
+}
+
+.card-game-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: var(--color-light);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    width: 100%;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card:hover .card-game-info {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.card-game-info h3 {
+    font-size: 16px;
+}
+
+.card:hover h3, .bi-star-fill {
+    color: var(--color-yellow);
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-inline: 10px;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(13,17,23,0.95), transparent);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+/*********** animando o card *************/
+@keyframes viewAnimation {
+    from {
+        opacity: 0;
+        scale: .5;
+    }
+
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+    
+}
+
+/*********** mini responsivo *******************/
+
+@media (width <= 1024px) {
+    .grid-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (width <= 650px) {
+    .header-page h1 {
+        font-size: 22px;
+    }
+
+    .grid-cards {
+        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+}
+
+/************ FOOTER *************/
+.footer {
+    background: var(--color-violet);
+    color: var(--color-light);
+    padding: 60px 40px 20px;
+    border-top: 1px solid rgba(0, 255, 200, 0.1);
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
+
+.footer-brand h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.footer-brand p {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.footer-links h4,
+.footer-social h4 {
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: var(--color-ciano-300);
+}
+
+.footer-links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0; /* remove recuo padrão do navegador */
+
+}
+
+.footer-links a {
+    color: var(--color-light);
+    font-size: 14px;
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--color-ciano-300);
+    opacity: 1;
+}
+
+/******** redes sociais *********/
+.social-icons {
+    display: flex;
+    gap: 15px;
+    font-size: 20px;
+}
+
+.social-icons i {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.social-icons i:hover {
+    color: var(--color-ciano-300);
+    transform: scale(1.2);
+}
+
+/******** linha final *********/
+.footer-bottom {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.5;
+}
+

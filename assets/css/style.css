@@ -1,0 +1,241 @@
+:root {
+    --color-text: #e2e8f0;
+    --color-verde-marinho: #67e8f9;
+    --color-preto: #020617;
+    --color-verde-musgo: #22c55e;
+    --color-preto-cinza: #ffffff1a;
+    --color-diamante: #0c8b8b;
+    --font-text: "Atkinson Hyperlegible", sans-serif;
+    --font-titulo: "Poppins", sans-serif;
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth;}
+
+a {text-decoration: none;}
+
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-weight: bold;
+    color: var(--color-preto);
+    background: var(--color-verde-musgo);
+    transition: 0.3s;
+}
+
+button:hover {
+    box-shadow: 0 0 15px var(--color-verde-musgo);
+    transform: scale(1.05);
+}
+
+
+/* BODY */
+body {
+    font-family: var(--font-text);
+    background: linear-gradient(180deg, var(--color-preto), var(--color-diamante));
+    color: var(--color-text);
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+header h1 {
+    color: var(--color-verde-marinho);
+    font-family: var(--font-titulo);
+}
+
+nav ul {
+    display: flex;
+    gap: 50px;
+    list-style: none;
+}
+
+nav a {
+    color: var(--color-text);
+    transition: 0.3s;
+    font-size: 25px;
+}
+
+nav a:hover {
+    color: var(--color-verde-marinho);
+}
+
+div a {
+    color: var(--color-text);
+    transition: 0.3s;
+    font-size: 25px;
+}
+
+div a:hover {
+    color: var(--color-verde-marinho);
+}
+
+
+/* SECTIONS */
+section {
+    padding: 60px 40px;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--color-verde-marinho);
+    font-size: 80px;
+    justify-content: center;
+    display: flex;
+}
+
+section div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* HERO */
+.hero {
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    padding: 40px;
+    background: url(../images/lagoa\ mistica.png) no-repeat center/cover;
+}
+
+.hero h2{
+    font-size: 80px;
+    font-weight: bold;
+    color: var(--color-verde-musgo);
+    font-family: var(--font-titulo);
+}
+
+/* CARDS */
+
+section div div a {
+    background: var(--color-preto-cinza);
+    border-radius: 15px;
+    padding: 15px;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+section div div a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px var(--color-diamante);
+}
+
+section img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* JOGOS */
+
+.jogos p{
+    font-size: 30px;
+    color: var(--color-verde-musgo);
+    font-weight: bold;
+}
+
+/* OFERTAS */
+.ofertas h3 {
+    margin-top: 10px;
+    color: var(--color-verde-musgo);
+    font-size: 30px;
+}
+
+.ofertas p {
+    font-size: 19px;
+}
+
+.ofertas p:last-child {
+    color: var(--color-verde-musgo);
+    font-weight: bold;
+    font-size: 30px;
+}
+
+/* INFO */
+.info {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid var(--color-preto-cinza);
+}
+
+footer div {
+    margin-bottom: 10px;
+}
+
+footer a {
+    margin: 0 10px;
+}
+
+footer a:hover {
+    color: var(--color-verde-marinho);
+}
+
+/* --- RESPONSIVIDADE (MEDIA QUERY) --- */
+
+@media (max-width: 768px) {
+    
+    section h2, 
+    .hero h2 {
+        font-size: 40px; 
+        text-align: center;
+    }
+
+    
+    header {
+        flex-direction: column; 
+        gap: 20px;
+        padding: 20px;
+    }
+
+    nav ul {
+        gap: 20px; 
+        flex-wrap: wrap; 
+        justify-content: center;
+    }
+
+    nav a, 
+    div a {
+        font-size: 18px; 
+    }
+
+    
+    section {
+        padding: 40px 20px; 
+    }
+
+    .hero {
+        height: 50vh; 
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Ajustando os parágrafos que estavam muito grandes */
+    .jogos p,
+    .ofertas h3,
+    .ofertas p:last-child {
+        font-size: 22px;
+    }
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iara Games - Jogos brasileiros</title>
+    <link rel="icon" href="./images/logo-controller.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <a href="./index.html" class="logo">
+            <span>Iara</span>
+            <img src="./images/logo-controller.png" alt="Iara Games - Logo da plataforma" class="logo-img">
+            <span>Games</span>
+        </a>
+        <nav class="nav" aria-label="Menu principal">
+            <a href="./index.html" class="ativo">Home</a>
+            <a href="./pages/loja.html">Loja</a>
+            <a href="./pages/biblioteca.html">Biblioteca</a>
+            <a href="./pages/forum.html">Fórum</a>
+            <a href="./pages/suporte.html">Suporte</a>
+            <a href="./pages/login.html" class="entrar">Login</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
+            <source src="./videos/hero-banner.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1><span>Iara</span><img src="./images/logo-controller.png" alt="" class="hero-titulo-icon" aria-hidden="true"><span>Games</span></h1>
+            <p class="hero-subtitulo">A plataforma de jogos independentes brasileiros.<br>Descubra novos talentos da cena indie nacional.</p>
+            <a href="./pages/loja.html" class="hero-cta" aria-label="Explorar jogos da plataforma">Explorar jogos</a>
+        </div>
+    </section>
+
+    <main class="main">
+        <section class="lenda-iara">
+            <h2><img src="./images/mermaid-svgrepo-com.svg" alt="" class="lenda-iara-icon" aria-hidden="true">Inspirado na lenda da Iara</h2>
+            <p>Na mitologia brasileira, Iara é a mãe-d'água que encanta quem ouve seu canto. Assim como a lenda, nossa plataforma busca encantar jogadores com jogos independentes criados por desenvolvedores brasileiros.</p>
+        </section>
+        <section class="destaques">
+            <h2>Jogos em destaque</h2>
+            <div class="cards-jogos">
+                <article class="card-jogo">
+                    <div class="card-jogo-img">
+                        <img src="./images/jogo-destaque-curupira.png" alt="Jogo inspirado no Curupira - Personagem do folclore brasileiro" class="card-jogo-img-img">
+                    </div>
+                    <h3>Curupira</h3>
+                    <p class="card-jogo-genero"><i class="fa-solid fa-compass" aria-hidden="true"></i> Aventura /
+                        Folclore</p>
+                    <a href="./pages/loja.html" class="card-jogo-link" aria-label="Ver jogo Curupira">Ver jogo</a>
+                </article>
+                <article class="card-jogo">
+                    <div class="card-jogo-img">
+                        <img src="./images/jogo-destaque-corrida.png" alt="Jogo de corrida urbana - Cidade futurista com carros esportivos" class="card-jogo-img-img">
+                    </div>
+                    <h3>Corrida Urbana</h3>
+                    <p class="card-jogo-genero"><i class="fa-solid fa-car" aria-hidden="true"></i> Corrida / Ação</p>
+                    <a href="./pages/loja.html" class="card-jogo-link" aria-label="Ver jogo Corrida Urbana">Ver jogo</a>
+                </article>
+                <article class="card-jogo">
+                    <div class="card-jogo-img">
+                        <img src="./images/jogo-destaque-vila.jpg" alt="Jogo de vilagem isométrica - Construção de cidade medieval" class="card-jogo-img-img">
+                    </div>
+                    <h3>Vila Medieval</h3>
+                    <p class="card-jogo-genero"><i class="fa-solid fa-chess" aria-hidden="true"></i> Estratégia /
+                        Simulação</p>
+                    <a href="./pages/loja.html" class="card-jogo-link" aria-label="Ver jogo Vila Medieval">Ver jogo</a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-titulo">2026 Iara Games</p>
+        <p class="footer-descricao">Plataforma de jogos independentes brasileiros</p>
+        <nav class="footer-nav" aria-label="Links do rodapé">
+            <a href="./pages/suporte.html">Contato</a>
+            <span class="footer-sep" aria-hidden="true">·</span>
+            <a href="./pages/suporte.html">Suporte</a>
+        </nav>
+    </footer>
+</body>
+
+</html>
