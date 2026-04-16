@@ -77,4 +77,4 @@ O projeto foi construído com **CSS3 puro**, com variáveis (`:root`), grid e ca
 
 ## Repositório
 
-Desenvolvimento e entregas atualizadas: **[github.com/arianaarai/Iara-Games---Sprint-1](https://github.com/arianaarai/Iara-Games---Sprint-1)** (fork de continuidade do projeto em grupo).
+Repositório oficial do **Grupo 6** (entrega e desenvolvimento): **[github.com/arianaarai/Iara-Games---Grupo-6](https://github.com/arianaarai/Iara-Games---Grupo-6)**.
