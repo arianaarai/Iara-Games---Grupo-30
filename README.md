@@ -51,12 +51,16 @@ O projeto utiliza um sistema de fontes híbrido para garantir leitura e hierarqu
 
 ## Destaques técnicos do CSS
 
-O projeto foi construído com **CSS3 puro**, com variáveis (`:root`), grid e camadas visuais:
+O projeto combina **folha global** ([`assets/css/style.css`](assets/css/style.css)) com **Bootstrap 5.3.3** (via CDN) na **página inicial**:
 
-* **Glassmorphism:** `backdrop-filter: blur(10px)` (e `-webkit-backdrop-filter` para compatibilidade), combinado a fundos translúcidos em **cards**, **cabeçalho fixo**, **painel do hero** e **rodapé**, simulando profundidade e leitura sobre o fundo.
-* **Layout responsivo:** **CSS Grid** com `auto-fit` / `minmax` para lançamentos e ofertas; **Flexbox** no cabeçalho e em blocos de ação.
-* **Interatividade:** microinterações em `hover` com `transform`, `translateY` e `box-shadow` (*glow*) para feedback imediato; estados de foco visíveis para navegação por teclado.
-* **Responsividade:** *media queries* ajustam padding, grid e tamanhos de título em **rem** (incluindo telas estreitas), mantendo hierarquia sem depender de valores fixos em px para títulos.
+* **Home (`index.html`):** **Bootstrap** para `navbar`, `container`, sistema de **grid responsivo** das vitrines (`row`, `row-cols-*`), **cards**, **botões** e espaçamento; identidade visual e efeitos (glass, glow, gradiente de fundo) ficam sob **`body.ig-home`** no CSS customizado.
+* **Demais telas e blocos:** continuam usando **CSS3** com variáveis (`:root`); onde faz sentido, **CSS Grid** com `auto-fit` / `minmax` (ex.: formulários e layouts em `style.css` — não é o grid principal das seções Lançamentos/Ofertas da home).
+
+Outros pontos:
+
+* **Glassmorphism:** `backdrop-filter: blur(10px)` (e `-webkit-backdrop-filter` para compatibilidade), combinado a fundos translúcidos em **cards**, **cabeçalho**, **painel do hero** (home) e **rodapé**, conforme o caso.
+* **Interatividade:** microinterações em `hover` com `transform`, `translateY` e `box-shadow` (*glow*) onde aplicável; **`:focus-visible`** em CTAs e botões da home para foco por teclado.
+* **Responsividade:** *media queries* e valores em **rem**; a home aproveita breakpoints e componentes responsivos do Bootstrap.
 
 ---
 
@@ -67,11 +71,14 @@ Fluxo em **HTML e CSS**; formulários com `action="#"` (sem back-end), foco em s
 | Página | Arquivo | Conteúdo |
 | :--- | :--- | :--- |
 | Home | `index.html` | Hero, lançamentos, ofertas, destaques |
+| Loja | `pages/loja.html` | Página mínima (stub); catálogo completo na próxima evolução |
+| Biblioteca | `pages/biblioteca.html` | Página mínima (stub) |
+| Fórum | `pages/forum.html` | Página mínima (stub) |
 | Login | `pages/login.html` | Entrar e criar conta (dois blocos no mesmo fluxo) |
 | Suporte | `pages/suporte.html` | Feedback e contato para jogadores/visitantes |
 | Cadastro de jogo | `pages/cadastro-jogo.html` | Envio de dados do jogo por estúdios/desenvolvedores |
 
-Navegação global no cabeçalho; links para Loja, Biblioteca e Fórum apontam para páginas ainda não implementadas nesta entrega.
+A **home** usa Bootstrap e aponta para essas rotas; Loja, Biblioteca e Fórum são **stubs** acessíveis para evitar links quebrados até a implementação completa.
 
 > **Entrega FIAP:** persona, ESG, justificativas de UX/UI e evolução Sprint 01 → 02 devem constar no **PDF** enviado na plataforma; este README resume o escopo técnico do repositório.
 
@@ -85,6 +92,9 @@ Navegação global no cabeçalho; links para Loja, Biblioteca e Fórum apontam p
 │   │   └── style.css       # Estilos globais e design tokens
 │   └── images/             # Imagens do hero, capas dos cards, etc.
 ├── pages/
+│   ├── loja.html           # Stub / em evolução
+│   ├── biblioteca.html     # Stub / em evolução
+│   ├── forum.html          # Stub / em evolução
 │   ├── login.html          # Entrar / criar conta
 │   ├── suporte.html        # Formulário de feedback
 │   └── cadastro-jogo.html  # Formulário de cadastro de jogo

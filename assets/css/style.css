@@ -1,7 +1,8 @@
 /*
-   Iara Games — Grid + HTML semântico + glassmorphism (Sprint 02).
-   Vidro: translúcido (#ffffff1a / rgba) + backdrop-filter blur(10px) nos blocos indicados.
-   Sem: clamp(), min()/max() como funções CSS, aspect-ratio, focus-visible.
+   Iara Games — HTML semântico + glassmorphism (Sprint 02).
+   Vidro: translucent rgba + backdrop-filter blur(10px) nos blocos indicados.
+   O arquivo usa também clamp(), minmax() em grids e :focus-visible onde faz sentido
+   (ex.: home body.ig-home, formulários, CTAs).
 */
 
 :root {
@@ -43,8 +44,8 @@ body {
     position: relative;
 }
 
-/* Brilho suave (gradientes radiais do material de background) */
-body::before {
+/* Brilho suave — só páginas legadas sem shell ig-home/ig-page (evita ::before duplicado com .ig-page) */
+body:not(.ig-home):not(.ig-page)::before {
     content: "";
     position: fixed;
     top: 0;
@@ -93,7 +94,7 @@ ul {
     border: 0;
 }
 
-.skip-link:focus {
+.skip-link:focus-visible {
     position: fixed;
     left: 1rem;
     top: 1rem;
@@ -112,7 +113,8 @@ ul {
     font-size: 0.95rem;
     border-radius: var(--radius-pill);
     box-shadow: var(--shadow-glow-musgo);
-    outline: none;
+    outline: 3px solid rgba(2, 6, 23, 0.95);
+    outline-offset: 2px;
 }
 
 .visually-hidden {
@@ -445,8 +447,8 @@ ul {
     resize: vertical;
 }
 
-.form-field input:focus,
-.form-field textarea:focus {
+.form-field input:focus-visible,
+.form-field textarea:focus-visible {
     border-color: rgba(103, 232, 249, 0.6);
     background: rgba(2, 6, 23, 0.85);
     box-shadow: 0 0 0 3px rgba(103, 232, 249, 0.12);
@@ -467,7 +469,7 @@ ul {
     cursor: pointer;
 }
 
-.form-field select:focus {
+.form-field select:focus-visible {
     border-color: rgba(103, 232, 249, 0.6);
     background: rgba(2, 6, 23, 0.85);
     box-shadow: 0 0 0 3px rgba(103, 232, 249, 0.12);
@@ -838,7 +840,7 @@ ul {
     box-shadow: var(--shadow-glow-musgo);
 }
 
-.btn--primary:focus {
+.btn--primary:focus-visible {
     outline: none;
     box-shadow: var(--shadow-glow-musgo), 0 0 0 3px var(--color-preto), 0 0 0 5px var(--color-verde-marinho);
 }
@@ -856,7 +858,7 @@ ul {
     transform: translateY(-2px);
 }
 
-.btn--secondary:focus {
+.btn--secondary:focus-visible {
     outline: none;
     box-shadow: var(--shadow-glow-marinho), 0 0 0 3px var(--color-preto), 0 0 0 5px var(--color-verde-musgo);
 }
@@ -901,7 +903,7 @@ ul {
     text-shadow: 0 0 12px rgba(103, 232, 249, 0.45);
 }
 
-.site-footer__social a:focus {
+.site-footer__social a:focus-visible {
     outline: 2px solid var(--color-verde-marinho);
     outline-offset: 4px;
     border-radius: 4px;
@@ -1085,6 +1087,902 @@ ul {
     justify-content: stretch;
 }
 
-.login-page__actions .btn--primary {
+.login-page__actions .btn-primary {
     width: 100%;
+}
+
+/* Formulários em páginas ig-page: Bootstrap btn-primary / btn-secondary com tokens da identidade */
+body.ig-page .form-card .btn-primary {
+    font-family: var(--font-subtitle);
+    font-weight: 700;
+    --bs-btn-color: var(--color-preto);
+    --bs-btn-bg: var(--color-verde-musgo);
+    --bs-btn-border-color: var(--color-verde-musgo);
+    --bs-btn-hover-color: var(--color-preto);
+    --bs-btn-hover-bg: #16a34a;
+    --bs-btn-hover-border-color: #16a34a;
+    --bs-btn-active-color: var(--color-preto);
+    --bs-btn-active-bg: #15803d;
+    --bs-btn-active-border-color: #15803d;
+    --bs-btn-focus-shadow-rgb: 34, 197, 94;
+    border-width: 2px;
+    box-shadow: var(--shadow-glow-musgo);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+body.ig-page .form-card .btn-primary:hover {
+    transform: scale(1.05);
+}
+
+body.ig-page .form-card .btn-primary:focus-visible {
+    box-shadow:
+        var(--shadow-glow-musgo),
+        0 0 0 3px var(--color-preto),
+        0 0 0 5px var(--color-verde-marinho);
+}
+
+body.ig-page .form-card .btn-secondary {
+    font-family: var(--font-subtitle);
+    font-weight: 700;
+    --bs-btn-color: var(--color-text);
+    --bs-btn-bg: rgba(2, 6, 23, 0.4);
+    --bs-btn-border-color: rgba(255, 255, 255, 0.12);
+    --bs-btn-hover-color: var(--color-verde-marinho);
+    --bs-btn-hover-bg: rgba(2, 6, 23, 0.65);
+    --bs-btn-hover-border-color: rgba(103, 232, 249, 0.45);
+    --bs-btn-active-color: var(--color-verde-marinho);
+    --bs-btn-active-bg: rgba(2, 6, 23, 0.75);
+    --bs-btn-active-border-color: rgba(103, 232, 249, 0.55);
+    --bs-btn-focus-shadow-rgb: 103, 232, 249;
+    border-width: 2px;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+body.ig-page .form-card .btn-secondary:hover {
+    box-shadow: var(--shadow-glow-marinho);
+    transform: translateY(-2px);
+}
+
+body.ig-page .form-card .btn-secondary:focus-visible {
+    box-shadow:
+        var(--shadow-glow-marinho),
+        0 0 0 3px var(--color-preto),
+        0 0 0 5px var(--color-verde-musgo);
+}
+
+/* ==========================================================================
+   Home + páginas internas (body.ig-page): shell, nav, rodapé. Hero/seções de cards: só body.ig-home
+   ========================================================================== */
+
+body.ig-home,
+body.ig-page {
+    --ig-card-inset: 0.5rem;
+    --ig-card-inner-radius: calc(var(--radius-card) - var(--ig-card-inset));
+    --ig-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --ig-duration-hover: 0.5s;
+
+    overflow-x: clip;
+
+    color: var(--color-text);
+    /* Um gradiente contínuo (sem camadas que marquem borda); evita “divisória” entre seções */
+    background-color: #061a1f;
+    background-image: linear-gradient(
+        180deg,
+        #020810 0%,
+        #05161c 12%,
+        #08282e 26%,
+        #0a353c 38%,
+        #0d4548 50%,
+        #0a383c 62%,
+        #062428 74%,
+        #041016 86%,
+        #020608 100%
+    );
+}
+
+body.ig-home::before,
+body.ig-page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(
+        ellipse 120% 70% at 50% 32%,
+        rgba(45, 180, 170, 0.14) 0%,
+        transparent 65%
+    );
+}
+
+body.ig-home > header,
+body.ig-page > header,
+body.ig-home > main,
+body.ig-page > main,
+body.ig-home > .ig-site-footer,
+body.ig-page > .ig-site-footer {
+    position: relative;
+    z-index: 1;
+}
+
+body.ig-home .ig-navbar,
+body.ig-page .ig-navbar {
+    background: rgba(2, 6, 23, 0.95) !important;
+    backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid rgba(103, 232, 249, 0.62) !important;
+    box-shadow:
+        0 1px 0 rgba(103, 232, 249, 0.22),
+        0 8px 28px rgba(0, 0, 0, 0.35);
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    min-height: 0;
+}
+
+body.ig-home .ig-navbar-container,
+body.ig-page .ig-navbar-container {
+    row-gap: 0.28rem;
+    column-gap: 0.75rem;
+}
+
+@media (min-width: 62rem) {
+    body.ig-home .ig-navbar-container,
+    body.ig-page .ig-navbar-container {
+        flex-wrap: nowrap;
+    }
+
+    body.ig-home .ig-navbar-end-group,
+    body.ig-page .ig-navbar-end-group {
+        gap: clamp(2rem, 5.5vw, 4rem);
+    }
+
+    body.ig-home .ig-navbar-nav-main,
+    body.ig-page .ig-navbar-nav-main {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+    body.ig-home .ig-navbar-nav-main .nav-item,
+    body.ig-page .ig-navbar-nav-main .nav-item {
+        white-space: nowrap;
+    }
+
+    body.ig-home .ig-navbar-nav-main .nav-link,
+    body.ig-page .ig-navbar-nav-main .nav-link {
+        padding-left: 0.45rem;
+        padding-right: 0.45rem;
+    }
+
+    body.ig-home .ig-navbar-nav-login .nav-link,
+    body.ig-page .ig-navbar-nav-login .nav-link {
+        padding-right: 0.15rem;
+        padding-left: 0.5rem;
+    }
+}
+
+@media (max-width: 61.98rem) {
+    body.ig-home .ig-navbar-collapse,
+    body.ig-page .ig-navbar-collapse {
+        flex-basis: 100%;
+    }
+
+    body.ig-home .ig-navbar-end-group,
+    body.ig-page .ig-navbar-end-group {
+        align-items: center;
+    }
+
+    body.ig-home .ig-navbar-nav-main,
+    body.ig-page .ig-navbar-nav-main,
+    body.ig-home .ig-navbar-nav-login,
+    body.ig-page .ig-navbar-nav-login {
+        width: 100%;
+        align-items: center;
+    }
+
+    body.ig-home .ig-navbar .navbar-nav .nav-link,
+    body.ig-page .ig-navbar .navbar-nav .nav-link {
+        text-align: center;
+    }
+
+    body.ig-home .ig-navbar-nav-login,
+    body.ig-page .ig-navbar-nav-login {
+        margin-top: 0.35rem;
+        padding-top: 0.6rem;
+        border-top: 1px solid rgba(103, 232, 249, 0.14);
+    }
+}
+
+body.ig-home .navbar .nav-link,
+body.ig-page .navbar .nav-link {
+    font-family: var(--font-subtitle);
+    font-weight: 500;
+    color: var(--color-text) !important;
+    transition: color var(--ig-duration-hover) var(--ig-ease-out);
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+}
+
+body.ig-home .navbar .nav-link:hover,
+body.ig-page .navbar .nav-link:hover {
+    color: var(--color-verde-marinho) !important;
+}
+
+body.ig-home .navbar .nav-link:focus-visible,
+body.ig-page .navbar .nav-link:focus-visible {
+    color: var(--color-verde-marinho) !important;
+    outline: 2px solid rgba(103, 232, 249, 0.65);
+    outline-offset: 3px;
+}
+
+body.ig-home .navbar-toggler,
+body.ig-page .navbar-toggler {
+    border-color: rgba(103, 232, 249, 0.4);
+    padding: 0.22rem 0.48rem;
+}
+
+body.ig-home .ig-navbar-brand-group,
+body.ig-page .ig-navbar-brand-group {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    column-gap: 0.5rem;
+}
+
+body.ig-home .ig-header-tagline,
+body.ig-page .ig-header-tagline {
+    font-family: var(--font-subtitle);
+    color: var(--color-text);
+    line-height: 1.35;
+    margin: 0;
+}
+
+body.ig-home .ig-navbar .ig-header-tagline,
+body.ig-page .ig-navbar .ig-header-tagline {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-verde-marinho);
+    line-height: 1.25;
+}
+
+body.ig-home .ig-logo,
+body.ig-page .ig-logo {
+    max-height: 90px;
+    width: auto;
+    height: auto;
+    vertical-align: middle;
+    /* Brilho suave; drop-shadow forte + transparência antiga (RGB branco / α0) gerava halo claro ao redimensionar */
+    filter: drop-shadow(0 0 5px rgba(103, 232, 249, 0.28));
+}
+
+/* Hero: conteúdo centralizado na vertical na área da seção */
+body.ig-home .ig-hero {
+    position: relative;
+    min-height: 75vh;
+    max-height: 720px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    overflow: hidden;
+}
+
+body.ig-home .ig-hero .container {
+    position: relative;
+    z-index: 3;
+}
+
+body.ig-home .ig-hero::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    height: clamp(112px, 22vh, 280px);
+    pointer-events: none;
+    /* Degradê longo + cor final alinhada ao body (--ig teal ~38%) para sumir o “degrau” */
+    background: linear-gradient(
+        to bottom,
+        rgba(2, 6, 23, 0) 0%,
+        rgba(2, 6, 23, 0.06) 12%,
+        rgba(5, 24, 30, 0.22) 32%,
+        rgba(8, 42, 50, 0.52) 58%,
+        rgba(10, 53, 60, 0.82) 82%,
+        rgba(10, 53, 60, 0.96) 94%,
+        #0a353c 100%
+    );
+}
+
+body.ig-home .ig-hero__bg {
+    position: absolute;
+    inset: 0;
+    background: url("../images/lagoa mistica.png") no-repeat center;
+    background-size: cover;
+}
+
+body.ig-home .ig-hero__shade {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(
+            115deg,
+            rgba(2, 6, 23, 0.52) 0%,
+            rgba(2, 6, 23, 0.28) 48%,
+            rgba(12, 139, 139, 0.2) 100%
+        ),
+        radial-gradient(
+            ellipse 110% 90% at 50% 36%,
+            transparent 28%,
+            rgba(2, 6, 23, 0.28) 100%
+        );
+}
+
+body.ig-home .ig-hero__inner {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    width: 100%;
+    max-width: var(--content-max);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.ig-home .ig-hero-panel {
+    position: relative;
+    z-index: 1;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 2.25rem 4rem 2.25rem 2.5rem;
+    background: rgba(2, 6, 23, 0.55);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+    border-radius: var(--radius-card);
+    border: none;
+    /* Contorno ciano + barra ::before — no mobile o vidro sozinho “sumia” o destaque */
+    box-shadow:
+        0 0 0 1px rgba(103, 232, 249, 0.38),
+        0 0 0 1px rgba(2, 6, 23, 0.55),
+        0 -12px 40px -6px rgba(2, 6, 23, 0.6),
+        0 -28px 64px -16px rgba(2, 6, 23, 0.38),
+        0 12px 40px -6px rgba(2, 6, 23, 0.6),
+        0 28px 64px -16px rgba(2, 6, 23, 0.38),
+        0 24px 48px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.09);
+}
+
+body.ig-home .ig-hero-panel::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    left: 0.75rem;
+    top: 0.85rem;
+    bottom: 0.85rem;
+    width: 5px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, var(--color-verde-marinho), var(--color-diamante));
+    box-shadow:
+        0 0 12px rgba(103, 232, 249, 0.85),
+        0 0 22px rgba(12, 139, 139, 0.45);
+}
+
+body.ig-home .ig-hero-panel > * {
+    position: relative;
+    z-index: 1;
+}
+
+@media (min-width: 62rem) {
+    body.ig-home .ig-hero {
+        min-height: 75vh;
+    }
+
+    body.ig-home .ig-hero__inner {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+}
+
+body.ig-home .ig-hero-badge {
+    align-self: flex-start;
+    margin: 0 0 1rem;
+    font-family: var(--font-subtitle);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--color-verde-marinho);
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid rgba(103, 232, 249, 0.45);
+    background: linear-gradient(135deg, rgba(12, 139, 139, 0.35), rgba(2, 6, 23, 0.6));
+    box-shadow: 0 0 20px rgba(12, 139, 139, 0.25);
+}
+
+body.ig-home .ig-hero #hero-heading,
+body.ig-home .ig-hero-title {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--color-verde-musgo);
+    text-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.9),
+        0 2px 16px rgba(0, 0, 0, 0.75),
+        0 0 28px rgba(34, 197, 94, 0.45);
+    margin-bottom: 1rem;
+}
+
+body.ig-home .ig-hero-lede {
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    line-height: 1.55;
+    color: var(--color-text);
+    text-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.95),
+        0 2px 12px rgba(0, 0, 0, 0.65);
+}
+
+@media (min-width: 48rem) {
+    body.ig-home .ig-hero #hero-heading,
+    body.ig-home .ig-hero-title {
+        font-size: 2.85rem;
+    }
+}
+
+/* Hero mais baixa e card mais compacto no telefone */
+@media (max-width: 47.98rem) {
+    body.ig-home .ig-hero {
+        min-height: min(58vh, 520px);
+        max-height: 560px;
+    }
+
+    body.ig-home .ig-hero__inner {
+        padding-top: 0.65rem;
+        padding-bottom: 1rem;
+    }
+
+    body.ig-home .ig-hero::after {
+        height: clamp(72px, 14vh, 200px);
+    }
+
+    body.ig-home .ig-hero-panel {
+        padding: 1.1rem 1rem 1.15rem 1.95rem;
+    }
+
+    body.ig-home .ig-hero-panel::before {
+        left: 0.55rem;
+        top: 0.65rem;
+        bottom: 0.65rem;
+        width: 4px;
+    }
+
+    body.ig-home .ig-hero-badge {
+        font-size: 0.68rem;
+        padding: 0.28rem 0.65rem;
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.08em;
+    }
+
+    body.ig-home .ig-hero #hero-heading,
+    body.ig-home .ig-hero-title {
+        font-size: clamp(1.4rem, 5.8vw, 1.65rem);
+        line-height: 1.12;
+        margin-bottom: 0.55rem;
+    }
+
+    body.ig-home .ig-hero-lede {
+        font-size: 0.92rem;
+        line-height: 1.45;
+    }
+
+    body.ig-home .ig-logo,
+    body.ig-page .ig-logo {
+        max-height: clamp(52px, 14vw, 72px);
+    }
+}
+
+@media (max-width: 35.99rem) {
+    body.ig-home .ig-hero-panel {
+        padding: 1rem 0.85rem 1.05rem 1.85rem;
+    }
+
+    body.ig-home .ig-hero-panel::before {
+        left: 0.5rem;
+        top: 0.55rem;
+        bottom: 0.55rem;
+    }
+}
+
+/* Badge e título numa linha só em telas bem largas; lede sempre quebra para não estourar o vidro */
+@media (min-width: 75rem) {
+    body.ig-home .ig-hero-badge {
+        white-space: nowrap;
+    }
+}
+
+@media (min-width: 87.5rem) {
+    body.ig-home .ig-hero-title {
+        white-space: nowrap;
+    }
+}
+
+body.ig-home .btn-ig-cta {
+    font-family: var(--font-subtitle);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--color-preto) !important;
+    background: var(--color-verde-musgo);
+    background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--color-verde-musgo) 78%, #ffffff 22%) 0%,
+        var(--color-verde-musgo) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow:
+        0 0 20px rgba(34, 197, 94, 0.55),
+        0 3px 12px rgba(0, 0, 0, 0.4);
+    transition:
+        box-shadow var(--ig-duration-hover) var(--ig-ease-out),
+        filter var(--ig-duration-hover) var(--ig-ease-out),
+        border-color var(--ig-duration-hover) var(--ig-ease-out);
+}
+
+body.ig-home .btn-ig-cta:hover {
+    color: var(--color-preto) !important;
+    filter: brightness(1.06);
+    border-color: rgba(255, 255, 255, 0.42);
+    box-shadow:
+        0 0 26px rgba(34, 197, 94, 0.55),
+        0 4px 14px rgba(0, 0, 0, 0.42);
+}
+
+body.ig-home .btn-ig-cta:focus-visible {
+    color: var(--color-preto) !important;
+    box-shadow:
+        var(--shadow-glow-musgo),
+        0 0 0 3px rgba(2, 6, 23, 0.95),
+        0 0 0 5px rgba(34, 197, 94, 0.85);
+}
+
+/* Multiply só em cima de fundo claro; com card escuro o blend apagava a arte */
+body.ig-home .ig-card-media--multiply {
+    background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+    isolation: isolate;
+}
+
+body.ig-home .ig-card-media--multiply .ig-card-img {
+    mix-blend-mode: multiply;
+}
+
+body.ig-home .ig-section-title {
+    font-family: var(--font-display);
+    color: var(--color-verde-marinho);
+    text-shadow: 0 0 8px rgba(103, 232, 249, 0.32);
+}
+
+/* Fundo 100% do body — sem overlay por seção (era isso que “traçava” faixa entre Lançamentos e Ofertas) */
+body.ig-home .ig-section-lancamentos {
+    background: transparent;
+}
+
+body.ig-home .ig-section-title--releases {
+    position: relative;
+    padding-bottom: 1.1rem;
+    margin-bottom: 2.85rem;
+    letter-spacing: 0.04em;
+    font-size: 2rem;
+    text-shadow:
+        0 0 10px rgba(103, 232, 249, 0.48),
+        0 0 22px rgba(103, 232, 249, 0.22);
+}
+
+@media (min-width: 48rem) {
+    body.ig-home .ig-section-title--releases {
+        font-size: 2.35rem;
+    }
+}
+
+body.ig-home .ig-section-title--releases::after {
+    content: "";
+    display: block;
+    width: min(220px, 70vw);
+    height: 4px;
+    margin: 0.75rem auto 0;
+    border-radius: 999px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--color-verde-marinho) 35%,
+        var(--color-diamante) 65%,
+        transparent 100%
+    );
+    box-shadow:
+        0 0 10px rgba(103, 232, 249, 0.42),
+        0 0 20px rgba(103, 232, 249, 0.18);
+}
+
+body.ig-home .ig-lancamentos-grid {
+    padding-top: 1.1rem;
+    padding-bottom: 0.5rem;
+}
+
+body.ig-home .ig-ofertas-grid {
+    padding-top: 1.1rem;
+    padding-bottom: 0.5rem;
+}
+
+body.ig-home .ig-section-band .ig-offer-card {
+    box-shadow:
+        0 0 0 1px rgba(103, 232, 249, 0.32),
+        var(--shadow-glow-diamante),
+        0 0 28px rgba(103, 232, 249, 0.12);
+}
+
+body.ig-home .ig-section-lancamentos .ig-game-card {
+    box-shadow:
+        0 0 0 1px rgba(103, 232, 249, 0.32),
+        var(--shadow-glow-diamante),
+        0 0 32px rgba(103, 232, 249, 0.16);
+}
+
+body.ig-home .ig-section-band {
+    background: transparent;
+}
+
+body.ig-home .ig-section-destaques {
+    padding-block: 2.25rem;
+    background: transparent;
+}
+
+body.ig-home .ig-game-card,
+body.ig-home .ig-offer-card {
+    position: relative;
+    /* Vidro em cima da faixa teal tingia o card inteiro; base mais opaca = moldura escura como no proto */
+    background: rgba(2, 6, 23, 0.94) !important;
+    backdrop-filter: saturate(1.05) blur(8px);
+    -webkit-backdrop-filter: saturate(1.05) blur(8px);
+    padding: var(--ig-card-inset);
+    /* Borda “ve” o topo cortado com backdrop-filter; anel em box-shadow pinta por fora da caixa */
+    border: none !important;
+    border-radius: var(--radius-card);
+    box-shadow:
+        0 0 0 1px rgba(103, 232, 249, 0.32),
+        var(--shadow-glow-diamante);
+    overflow: visible;
+    isolation: isolate;
+    transition:
+        transform var(--ig-duration-hover) var(--ig-ease-out),
+        box-shadow var(--ig-duration-hover) var(--ig-ease-out);
+}
+
+body.ig-home .ig-game-card > a,
+body.ig-home .ig-offer-card > a {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    border-radius: var(--ig-card-inner-radius);
+    overflow: hidden;
+}
+
+/* Moldura por cima da arte (evita o brilho do box-shadow “sumir” no topo da capa) */
+body.ig-home .ig-game-card::before,
+body.ig-home .ig-offer-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--ig-duration-hover) var(--ig-ease-out);
+    box-shadow: inset 0 0 0 1px rgba(165, 243, 252, 0.65);
+}
+
+body.ig-home .ig-game-card:hover::before,
+body.ig-home .ig-offer-card:hover::before,
+body.ig-home .ig-game-card:focus-within::before,
+body.ig-home .ig-offer-card:focus-within::before {
+    opacity: 1;
+}
+
+body.ig-home .ig-game-card:hover,
+body.ig-home .ig-offer-card:hover,
+body.ig-home .ig-game-card:focus-within,
+body.ig-home .ig-offer-card:focus-within {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow:
+        0 0 0 1px rgba(103, 232, 249, 0.55),
+        0 0 20px rgba(103, 232, 249, 0.45),
+        0 0 36px rgba(103, 232, 249, 0.2),
+        0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.ig-home .ig-game-card,
+    body.ig-home .ig-offer-card {
+        transition: none;
+    }
+
+    body.ig-home .ig-game-card::before,
+    body.ig-home .ig-offer-card::before {
+        transition: none;
+    }
+
+    body.ig-home .btn-ig-cta,
+    body.ig-home .ig-btn-secondary,
+    body.ig-home .navbar .nav-link,
+    body.ig-page .navbar .nav-link {
+        transition: none;
+    }
+
+    body.ig-home .ig-game-card:hover,
+    body.ig-home .ig-offer-card:hover,
+    body.ig-home .ig-game-card:focus-within,
+    body.ig-home .ig-offer-card:focus-within {
+        transform: none;
+    }
+}
+
+body.ig-home .ig-game-card .card-body,
+body.ig-home .ig-offer-card .card-body {
+    flex: 1 1 auto;
+    background: rgba(2, 14, 20, 0.88);
+    border-top: 1px solid rgba(103, 232, 249, 0.22);
+    padding: 1rem 1.15rem 1.25rem;
+}
+
+@media (max-width: 47.98rem) {
+    body.ig-home .ig-game-card .card-body,
+    body.ig-home .ig-offer-card .card-body {
+        padding: 1rem 1.1rem 1.4rem;
+    }
+}
+
+body.ig-home .ig-game-card .card-title {
+    font-family: var(--font-subtitle);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #5eead4;
+    text-shadow:
+        0 0 14px rgba(103, 232, 249, 0.45),
+        0 0 22px rgba(34, 197, 94, 0.35),
+        0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+body.ig-home .ig-offer-game-title {
+    font-family: var(--font-subtitle);
+    font-weight: 600;
+    color: #5eead4;
+    text-shadow:
+        0 0 12px rgba(103, 232, 249, 0.4),
+        0 0 18px rgba(34, 197, 94, 0.3),
+        0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+body.ig-home .ig-card-img {
+    width: 100%;
+    aspect-ratio: 400 / 225;
+    object-fit: cover;
+    object-position: center;
+}
+
+body.ig-home .ig-offer-discount {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--color-verde-marinho);
+}
+
+body.ig-home .ig-offer-price {
+    font-family: var(--font-subtitle);
+    font-size: 1.22rem;
+    font-weight: 600;
+    color: var(--color-verde-musgo);
+    text-shadow:
+        0 0 14px rgba(34, 197, 94, 0.45),
+        0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+body.ig-home .btn-success {
+    font-family: var(--font-subtitle);
+    font-weight: 600;
+    --bs-btn-bg: var(--color-verde-musgo);
+    --bs-btn-border-color: var(--color-verde-musgo);
+    --bs-btn-hover-bg: #16a34a;
+    --bs-btn-hover-border-color: #16a34a;
+    --bs-btn-color: var(--color-preto);
+    box-shadow: var(--shadow-glow-musgo);
+}
+
+body.ig-home .btn-success:hover {
+    color: var(--color-preto);
+}
+
+body.ig-home .ig-btn-secondary {
+    font-family: var(--font-subtitle);
+    font-weight: 600;
+    color: var(--color-text);
+    border: 1px solid rgba(226, 232, 240, 0.35);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 0 0 1px rgba(103, 232, 249, 0.1);
+    transition:
+        color var(--ig-duration-hover) var(--ig-ease-out),
+        border-color var(--ig-duration-hover) var(--ig-ease-out),
+        background var(--ig-duration-hover) var(--ig-ease-out),
+        box-shadow var(--ig-duration-hover) var(--ig-ease-out);
+}
+
+body.ig-home .ig-btn-secondary:hover {
+    color: var(--color-verde-marinho);
+    border-color: var(--color-verde-marinho);
+    background: rgba(103, 232, 249, 0.12);
+    box-shadow: 0 0 22px rgba(103, 232, 249, 0.28);
+}
+
+/* Destaques — pills do protótipo: teal bem escuro, texto branco, baixo contraste com o fundo */
+body.ig-home .ig-section-destaques .ig-btn-secondary {
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: #f8fafc !important;
+    border: 1px solid rgba(226, 232, 240, 0.38);
+    background: rgba(3, 20, 24, 0.78);
+    padding: 0.8125rem 2.125rem;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 1px 4px rgba(0, 0, 0, 0.45);
+}
+
+body.ig-home .ig-section-destaques .ig-btn-secondary:hover {
+    color: #ffffff !important;
+    border-color: rgba(248, 250, 252, 0.55);
+    background: rgba(5, 28, 33, 0.88);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+body.ig-home .ig-section-destaques .ig-btn-secondary:focus-visible {
+    color: #ffffff !important;
+    outline: 2px solid rgba(248, 250, 252, 0.85);
+    outline-offset: 3px;
+}
+
+body.ig-home .ig-site-footer,
+body.ig-page .ig-site-footer {
+    background: #010509;
+    border: none !important;
+    border-top: 1px solid rgba(103, 232, 249, 0.62) !important;
+    box-shadow: 0 -1px 0 rgba(103, 232, 249, 0.22);
+}
+
+body.ig-home .ig-footer-muted,
+body.ig-page .ig-footer-muted {
+    color: rgba(103, 232, 249, 0.68);
+}
+
+body.ig-home .ig-footer-copy,
+body.ig-page .ig-footer-copy {
+    color: rgba(203, 213, 225, 0.75);
+}
+
+body.ig-home .ig-site-footer a.link-light,
+body.ig-page .ig-site-footer a.link-light {
+    color: rgba(248, 250, 252, 0.96) !important;
+}
+
+body.ig-home .ig-site-footer a.link-light:hover,
+body.ig-page .ig-site-footer a.link-light:hover {
+    color: var(--color-verde-marinho) !important;
+}
+
+body.ig-home .ig-site-footer a.link-light:focus-visible,
+body.ig-page .ig-site-footer a.link-light:focus-visible {
+    color: var(--color-verde-marinho) !important;
+    outline: 2px solid rgba(103, 232, 249, 0.75);
+    outline-offset: 3px;
+    border-radius: 2px;
 }

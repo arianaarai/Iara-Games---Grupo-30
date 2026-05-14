@@ -7,28 +7,40 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-<body>
+<body class="ig-page">
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 
-    <header class="site-header">
-        <div class="site-header__mark">
-            <a class="site-header__brand" href="../index.html">Iara Games</a>
-            <p class="site-header__tagline">Profundezas amazônicas · Indies nacionais</p>
-        </div>
-        <nav class="site-header__nav" aria-label="Principal">
-            <ul>
-                <li><a href="./loja.html">Loja</a></li>
-                <li><a href="./biblioteca.html">Biblioteca</a></li>
-                <li><a href="./forum.html">Fórum</a></li>
-                <li><a href="./suporte.html" aria-current="page">Suporte</a></li>
-                <li><a href="./cadastro-jogo.html">Cadastro de jogo</a></li>
-            </ul>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark ig-navbar" aria-label="Principal">
+            <div class="container d-flex flex-wrap align-items-center ig-navbar-container">
+                <div class="d-flex align-items-center flex-shrink-0 ig-navbar-brand-group">
+                    <a class="navbar-brand py-0 me-2" href="../index.html">
+                        <img src="../assets/images/logo-iara-games.png" class="d-inline-block ig-logo" width="260" height="90" alt="Logotipo Iara Games.">
+                    </a>
+                    <p class="ig-header-tagline small mb-0 ms-2 ms-xl-3 text-uppercase d-none d-xl-block">Profundezas amazônicas · Indies nacionais</p>
+                </div>
+                <button class="navbar-toggler ig-navbar-toggler ms-auto d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir ou fechar menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse flex-grow-1 ig-navbar-collapse" id="menuPrincipal">
+                    <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-lg-end w-100 ig-navbar-end-group">
+                        <ul class="navbar-nav ig-navbar-nav-main mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="./loja.html">Loja</a></li>
+                            <li class="nav-item"><a class="nav-link" href="./biblioteca.html">Biblioteca</a></li>
+                            <li class="nav-item"><a class="nav-link" href="./forum.html">Fórum</a></li>
+                            <li class="nav-item"><a class="nav-link" href="./suporte.html" aria-current="page">Suporte</a></li>
+                            <li class="nav-item"><a class="nav-link" href="./cadastro-jogo.html">Cadastro de jogo</a></li>
+                        </ul>
+                        <ul class="navbar-nav ig-navbar-nav-login mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="./login.html">Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </nav>
-        <div class="site-header__actions">
-            <a href="./login.html">Login</a>
-        </div>
     </header>
 
     <main id="conteudo">
@@ -119,8 +131,8 @@
                         </fieldset>
 
                         <div class="form-card__actions">
-                            <button class="btn btn--primary" type="submit">Enviar feedback</button>
-                            <button class="btn btn--secondary" type="reset">Limpar</button>
+                            <button class="btn btn-primary" type="submit">Enviar feedback</button>
+                            <button class="btn btn-secondary" type="reset">Limpar</button>
                         </div>
                     </form>
                 </div>
@@ -128,17 +140,21 @@
         </section>
     </main>
 
-    <footer class="site-footer">
-        <nav class="site-footer__social" aria-label="Redes sociais">
-            <ul>
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">Twitter (X)</a></li>
-                <li><a href="#">Instagram</a></li>
-                <li><a href="#">YouTube</a></li>
-            </ul>
-        </nav>
-        <p class="site-footer__tagline">Consumo digital · Visibilidade para quem cria aqui</p>
-        <p class="site-footer__copy">© Iara Games. Todos os direitos reservados.</p>
+    <footer class="ig-site-footer py-4">
+        <div class="container text-center">
+            <nav aria-label="Redes sociais">
+                <ul class="list-inline mb-3">
+                    <li class="list-inline-item"><a class="link-light link-underline-opacity-75" href="#">Facebook</a></li>
+                    <li class="list-inline-item"><a class="link-light link-underline-opacity-75" href="#">Twitter (X)</a></li>
+                    <li class="list-inline-item"><a class="link-light link-underline-opacity-75" href="#">Instagram</a></li>
+                    <li class="list-inline-item"><a class="link-light link-underline-opacity-75" href="#">YouTube</a></li>
+                </ul>
+            </nav>
+            <p class="small ig-footer-muted mb-2">Consumo digital · Visibilidade para quem cria aqui</p>
+            <p class="small ig-footer-copy mb-0">© Iara Games. Todos os direitos reservados.</p>
+        </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
