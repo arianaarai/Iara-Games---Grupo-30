@@ -1,10 +1,10 @@
 # Iara Games — O coração dos jogos brasileiros
 
-> **FIAP · Etapa 2 · Sprint 02**  
+> **FIAP · Etapa 3 · Sprint 03**  
 > **Status:** Em desenvolvimento  
 > **Conceito:** Uma plataforma de e-commerce mística e moderna, focada em dar visibilidade aos jogos produzidos no Brasil.
 
-A Iara Games não é apenas uma loja; é uma imersão nas águas do desenvolvimento nacional. O projeto utiliza uma estética *dark mode* profunda, inspirada nas lendas amazônicas, equilibrada com CSS moderno e identidade visual consolidada na Sprint 02.
+A Iara Games não é apenas uma loja; é uma imersão nas águas do desenvolvimento nacional. O projeto utiliza uma estética *dark mode* profunda, inspirada nas lendas amazônicas, equilibrada com CSS moderno, Bootstrap na casca da home e identidade visual alinhada ao manual da marca (evolução a partir da Etapa 2).
 
 ## Pesquisa de plataformas
 
@@ -64,7 +64,7 @@ Outros pontos:
 
 ---
 
-## Sprint 02 — páginas e formulários (protótipo)
+## Sprint 03 — páginas e formulários (protótipo)
 
 Fluxo em **HTML e CSS**; formulários com `action="#"` (sem back-end), foco em semântica, grid e usabilidade.
 
@@ -80,7 +80,7 @@ Fluxo em **HTML e CSS**; formulários com `action="#"` (sem back-end), foco em s
 
 A **home** usa Bootstrap e aponta para essas rotas; Loja, Biblioteca e Fórum são **stubs** acessíveis para evitar links quebrados até a implementação completa.
 
-> **Entrega FIAP:** persona, ESG, justificativas de UX/UI e evolução Sprint 01 → 02 devem constar no **PDF** enviado na plataforma; este README resume o escopo técnico do repositório.
+> **Entrega FIAP (Etapa 3):** persona, ESG, justificativas de UX/UI e evolução do protótipo ao longo das sprints devem constar no **PDF** enviado na plataforma; este README resume o escopo técnico do repositório na **Sprint 03**.
 
 ---
 
