@@ -1986,3 +1986,117 @@ body.ig-page .ig-site-footer a.link-light:focus-visible {
     outline-offset: 3px;
     border-radius: 2px;
 }
+/* ===== Pessoa 3 — Identidade visual + CSS global ===== */
+
+:root {
+    --ig-bg: #020617;
+    --ig-bg-2: #071522;
+    --ig-cyan: #67e8f9;
+    --ig-green: #22c55e;
+    --ig-diamond: #0c8b8b;
+    --ig-text: #e2e8f0;
+    --ig-muted: rgba(226, 232, 240, 0.75);
+    --ig-glass: rgba(255, 255, 255, 0.10);
+    --ig-border: rgba(103, 232, 249, 0.22);
+    --ig-radius: 18px;
+    --ig-shadow: 0 0 28px rgba(103, 232, 249, 0.22);
+}
+
+body {
+    background:
+    radial-gradient(circle at top left, rgba(103, 232, 249, 0.12), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.10), transparent 35%),
+    linear-gradient(180deg, var(--ig-bg), var(--ig-bg-2));
+    color: var(--ig-text);
+}
+
+.navbar,
+.site-header,
+.site-footer,
+.form-card,
+.game-card__link,
+.offer-card__link {
+    background: var(--ig-glass);
+    border: 1px solid var(--ig-border);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.section__title,
+.hero__badge,
+.site-header__brand {
+    color: var(--ig-cyan);
+    text-shadow: 0 0 18px rgba(103, 232, 249, 0.45);
+}
+
+.hero__title,
+.game-card__title,
+.offer-card__title,
+.offer-card__price-new {
+    color: var(--ig-green);
+}
+
+.btn,
+.btn-primary,
+.btn--primary {
+    background: var(--ig-green) !important;
+    color: #020617 !important;
+    border: none !important;
+    border-radius: 999px;
+    font-weight: 700;
+    transition: 0.3s ease;
+}
+
+.btn:hover,
+.btn-primary:hover,
+.btn--primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 22px rgba(34, 197, 94, 0.55);
+}
+
+.game-card__link,
+.offer-card__link {
+    border-radius: var(--ig-radius);
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.game-card__link:hover,
+.offer-card__link:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--ig-shadow);
+    border-color: var(--ig-cyan);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 3px solid var(--ig-cyan);
+    outline-offset: 3px;
+}
+
+p,
+.section__lead {
+    color: var(--ig-muted);
+}
+
+img {
+    border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+    .hero__title {
+    font-size: 1.8rem;
+    }
+
+    .section__title {
+    font-size: 1.6rem;
+    }
+
+    .game-card__link,
+    .offer-card__link {
+    margin-bottom: 1rem;
+    }
+}
