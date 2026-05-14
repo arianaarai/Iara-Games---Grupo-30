@@ -4,7 +4,7 @@
 > **Status:** Em desenvolvimento  
 > **Conceito:** Uma plataforma de e-commerce mística e moderna, focada em dar visibilidade aos jogos produzidos no Brasil.
 
-A Iara Games não é apenas uma loja; é uma imersão nas águas do desenvolvimento nacional. O projeto utiliza uma estética *dark mode* profunda, inspirada nas lendas amazônicas, equilibrada com CSS moderno, Bootstrap na casca da home e identidade visual alinhada ao manual da marca (evolução a partir da Etapa 2).
+A Iara Games não é apenas uma loja; é uma imersão nas águas do desenvolvimento nacional. O projeto utiliza uma estética *dark mode* profunda, inspirada nas lendas amazônicas, equilibrada com CSS moderno, **Bootstrap na casca** (home e páginas internas) e identidade visual alinhada ao manual da marca (evolução a partir da Etapa 2).
 
 ## Pesquisa de plataformas
 
@@ -51,16 +51,17 @@ O projeto utiliza um sistema de fontes híbrido para garantir leitura e hierarqu
 
 ## Destaques técnicos do CSS
 
-O projeto combina **folha global** ([`assets/css/style.css`](assets/css/style.css)) com **Bootstrap 5.3.3** (via CDN) na **página inicial**:
+O projeto combina **folha global** ([`assets/css/style.css`](assets/css/style.css)) — variáveis (`:root`), tokens da identidade e componentes customizados — com **Bootstrap 5.3.3** (via CDN) na **casca** da experiência:
 
-* **Home (`index.html`):** **Bootstrap** para `navbar`, `container`, sistema de **grid responsivo** das vitrines (`row`, `row-cols-*`), **cards**, **botões** e espaçamento; identidade visual e efeitos (glass, glow, gradiente de fundo) ficam sob **`body.ig-home`** no CSS customizado.
-* **Demais telas e blocos:** continuam usando **CSS3** com variáveis (`:root`); onde faz sentido, **CSS Grid** com `auto-fit` / `minmax` (ex.: formulários e layouts em `style.css` — não é o grid principal das seções Lançamentos/Ofertas da home).
+* **Home (`body.ig-home`) e páginas internas (`body.ig-page`):** **Bootstrap** para **`navbar`**, **`container`**, **JavaScript do menu** (`bootstrap.bundle`) e utilitários de layout; o miolo específico de cada tela continua estilizado em **`style.css`** (gradientes de fundo, glass, formulários `.form-card`, botões de marca, hero e vitrines da home).
+* **Home:** além da nav, Bootstrap estrutura o **grid responsivo** das vitrines (**`row`**, **`row-cols-*`**), **cards** das seções Lançamentos/Ofertas e espaçamento; efeitos de identidade (glow, painel do hero, etc.) ficam sob **`body.ig-home`** no CSS customizado.
+* **Formulários e grids legados** em `style.css` usam **CSS Grid** (`auto-fit` / `minmax`) onde faz sentido, independentemente do grid Bootstrap da home.
 
 Outros pontos:
 
 * **Glassmorphism:** `backdrop-filter: blur(10px)` (e `-webkit-backdrop-filter` para compatibilidade), combinado a fundos translúcidos em **cards**, **cabeçalho**, **painel do hero** (home) e **rodapé**, conforme o caso.
-* **Interatividade:** microinterações em `hover` com `transform`, `translateY` e `box-shadow` (*glow*) onde aplicável; **`:focus-visible`** em CTAs e botões da home para foco por teclado.
-* **Responsividade:** *media queries* e valores em **rem**; a home aproveita breakpoints e componentes responsivos do Bootstrap.
+* **Interatividade:** microinterações em `hover` com `transform`, `translateY` e `box-shadow` (*glow*) onde aplicável; **`:focus-visible`** em CTAs, links e controles para foco por teclado.
+* **Responsividade:** *media queries* e valores em **rem**; a home e o shell das páginas internas aproveitam breakpoints e componentes responsivos do Bootstrap onde aplicável.
 
 ---
 
@@ -78,7 +79,7 @@ Fluxo em **HTML e CSS**; formulários com `action="#"` (sem back-end), foco em s
 | Suporte | `pages/suporte.html` | Feedback e contato para jogadores/visitantes |
 | Cadastro de jogo | `pages/cadastro-jogo.html` | Envio de dados do jogo por estúdios/desenvolvedores |
 
-A **home** usa Bootstrap e aponta para essas rotas; Loja, Biblioteca e Fórum são **stubs** acessíveis para evitar links quebrados até a implementação completa.
+A **home** e as páginas em `pages/` (shell **`ig-page`**) usam Bootstrap na navegação e apontam para essas rotas; Loja, Biblioteca e Fórum são **stubs** acessíveis para evitar links quebrados até a implementação completa.
 
 > **Entrega FIAP (Etapa 3):** persona, ESG, justificativas de UX/UI e evolução do protótipo ao longo das sprints devem constar no **PDF** enviado na plataforma; este README resume o escopo técnico do repositório na **Sprint 03**.
 
