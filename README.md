@@ -75,6 +75,7 @@ Fluxo em **HTML e CSS**; formulários com `action="#"` (sem back-end), foco em s
 | Loja | `pages/loja.html` | Página mínima (stub); catálogo completo na próxima evolução |
 | Biblioteca | `pages/biblioteca.html` | Página mínima (stub) |
 | Fórum | `pages/forum.html` | Página mínima (stub) |
+| Comunidade | `pages/comunidade.html` | Salas de chat (protótipo front-end) |
 | Login | `pages/login.html` | Entrar e criar conta (dois blocos no mesmo fluxo) |
 | Suporte | `pages/suporte.html` | Feedback e contato para jogadores/visitantes |
 | Cadastro de jogo | `pages/cadastro-jogo.html` | Envio de dados do jogo por estúdios/desenvolvedores |
@@ -91,11 +92,13 @@ A **home** e as páginas em `pages/` (shell **`ig-page`**) usam Bootstrap na nav
 ├── assets/
 │   ├── css/
 │   │   └── style.css       # Estilos globais e design tokens
-│   └── images/             # Imagens do hero, capas dos cards, etc.
+│   ├── images/             # Imagens do hero, capas dos cards, etc.
+│   └── videos/             # Vídeos de apoio (Fase 3); uso opcional no HTML/CSS
 ├── pages/
 │   ├── loja.html           # Stub / em evolução
 │   ├── biblioteca.html     # Stub / em evolução
 │   ├── forum.html          # Stub / em evolução
+│   ├── comunidade.html      # Chat por jogo / conversa aberta (protótipo)
 │   ├── login.html          # Entrar / criar conta
 │   ├── suporte.html        # Formulário de feedback
 │   └── cadastro-jogo.html  # Formulário de cadastro de jogo
