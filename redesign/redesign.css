@@ -8,7 +8,21 @@ body.ig-redesign {
 }
 
 body.ig-redesign .ig-hero-panel {
-  max-width: 42rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+body.ig-redesign .ig-hero-panel > * {
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* Título em uma linha só em telas largas (como original), com painel full width */
+@media (min-width: 87.5rem) {
+  body.ig-redesign .ig-hero-title,
+  body.ig-redesign .ig-hero #hero-heading {
+    white-space: nowrap;
+  }
 }
 
 body.ig-redesign .ig-hero-actions {
@@ -213,14 +227,35 @@ body.ig-redesign .ig-version-banner a {
   text-underline-offset: 2px;
 }
 
-body.ig-redesign .ig-live-feedback {
-  min-height: 1.25rem;
+/* Dropdown "Mais" — evita corte pelo banner promocional abaixo do header */
+body.ig-redesign > header {
+  position: relative;
+  z-index: 1030;
 }
 
-/* Banner promocional (feedback professor + atividade) */
+body.ig-redesign .ig-navbar,
+body.ig-redesign .ig-navbar-container,
+body.ig-redesign .navbar-collapse {
+  overflow: visible;
+}
+
+body.ig-redesign .dropdown-menu {
+  z-index: 1040;
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
+  border: 1px solid rgba(103, 232, 249, 0.2);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
 body.ig-redesign .ig-promo-banner {
+  position: relative;
+  z-index: 1;
   background: linear-gradient(90deg, rgba(34, 197, 94, 0.22) 0%, rgba(12, 139, 139, 0.35) 50%, rgba(103, 232, 249, 0.15) 100%);
   border-bottom: 1px solid rgba(34, 197, 94, 0.35);
+}
+
+body.ig-redesign .ig-live-feedback {
+  min-height: 1.25rem;
 }
 
 body.ig-redesign .ig-promo-banner__title {
