@@ -1,6 +1,6 @@
 # Iara Games — O coração dos jogos brasileiros
 
-> **FIAP · Etapa 3 · Sprint 03** · **Etapa 4 · Redesign de Interação**  
+> **FIAP · Grupo 3** · Etapa 3 · Sprint 03 · **Etapa 4 · Redesign de Interação**  
 > **Status:** Em desenvolvimento  
 > **Conceito:** Uma plataforma de e-commerce mística e moderna, focada em dar visibilidade aos jogos produzidos no Brasil.
 
@@ -156,4 +156,4 @@ A **home** e as páginas em `pages/` (shell **`ig-page`**) usam Bootstrap na nav
 
 ## Repositório
 
-Repositório oficial do **Grupo 30** (entrega e desenvolvimento): **[github.com/arianaarai/Iara-Games---Grupo-30](https://github.com/arianaarai/Iara-Games---Grupo-30)**.
+Repositório oficial do **Grupo 3** (entrega e desenvolvimento): **[github.com/arianaarai/Iara-Games---Grupo-30](https://github.com/arianaarai/Iara-Games---Grupo-30)**.
