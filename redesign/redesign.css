@@ -1,0 +1,293 @@
+/*
+  Redesign de Interação — Etapa 4 · home reformulada
+  Estende assets/css/style.css (identidade Iara Games)
+*/
+
+body.ig-redesign {
+  --rd-search-bg: rgba(2, 6, 23, 0.85);
+}
+
+body.ig-redesign .ig-hero-panel {
+  max-width: 42rem;
+}
+
+body.ig-redesign .ig-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+body.ig-redesign .ig-hero-actions .btn-outline-ig {
+  border: 2px solid rgba(103, 232, 249, 0.55);
+  color: var(--color-verde-marinho);
+  background: transparent;
+  font-family: var(--font-subtitle);
+  font-weight: 600;
+  transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+}
+
+body.ig-redesign .ig-hero-actions .btn-outline-ig:hover,
+body.ig-redesign .ig-hero-actions .btn-outline-ig:focus-visible {
+  background: rgba(103, 232, 249, 0.12);
+  color: #fff;
+  box-shadow: var(--shadow-glow-marinho);
+}
+
+body.ig-redesign .ig-search-bar {
+  position: sticky;
+  top: 4.5rem;
+  z-index: 40;
+  padding: 1rem 0;
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0.95) 0%, rgba(2, 6, 23, 0.75) 100%);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(103, 232, 249, 0.1);
+}
+
+body.ig-redesign .ig-search-field {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+body.ig-redesign .ig-search-field input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(103, 232, 249, 0.25);
+  background: var(--rd-search-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+body.ig-redesign .ig-search-field input::placeholder {
+  color: rgba(226, 232, 240, 0.5);
+}
+
+body.ig-redesign .ig-search-field input:focus-visible {
+  outline: 3px solid var(--color-verde-musgo);
+  outline-offset: 2px;
+  border-color: var(--color-verde-musgo);
+}
+
+body.ig-redesign .ig-search-field button {
+  flex-shrink: 0;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--color-verde-musgo);
+  color: var(--color-preto);
+  font-family: var(--font-subtitle);
+  font-weight: 600;
+  cursor: pointer;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+body.ig-redesign .ig-search-field button:hover,
+body.ig-redesign .ig-search-field button:focus-visible {
+  box-shadow: var(--shadow-glow-musgo);
+  transform: translateY(-1px);
+}
+
+body.ig-redesign .ig-search-hint {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: rgba(226, 232, 240, 0.65);
+}
+
+body.ig-redesign .ig-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+body.ig-redesign .ig-filter-chip {
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(103, 232, 249, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-text);
+  font-family: var(--font-subtitle);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+body.ig-redesign .ig-filter-chip:hover,
+body.ig-redesign .ig-filter-chip:focus-visible {
+  border-color: var(--color-verde-marinho);
+  box-shadow: 0 0 12px rgba(103, 232, 249, 0.25);
+}
+
+body.ig-redesign .ig-filter-chip[aria-pressed="true"] {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: var(--color-verde-musgo);
+  color: #fff;
+}
+
+body.ig-redesign .ig-game-card .ig-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+}
+
+body.ig-redesign .ig-game-card .ig-card-genre {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(103, 232, 249, 0.85);
+  font-family: var(--font-subtitle);
+}
+
+body.ig-redesign .ig-game-card .ig-card-price {
+  font-family: var(--font-subtitle);
+  font-weight: 600;
+  color: var(--color-verde-musgo);
+  font-size: 0.95rem;
+}
+
+body.ig-redesign .ig-game-card .ig-card-action {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  font-family: var(--font-subtitle);
+  color: var(--color-verde-marinho);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+body.ig-redesign .ig-empty-state {
+  display: none;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border-radius: var(--radius-card);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px dashed rgba(103, 232, 249, 0.25);
+}
+
+body.ig-redesign .ig-empty-state.is-visible {
+  display: block;
+}
+
+body.ig-redesign .ig-empty-state p {
+  margin-bottom: 1rem;
+  color: rgba(226, 232, 240, 0.85);
+}
+
+body.ig-redesign .ig-game-card.is-hidden,
+body.ig-redesign .ig-offer-card.is-hidden {
+  display: none !important;
+}
+
+body.ig-redesign .ig-nav-login-btn {
+  padding: 0.45rem 1.1rem !important;
+  border-radius: var(--radius-pill) !important;
+  background: var(--color-verde-musgo) !important;
+  color: var(--color-preto) !important;
+  font-weight: 600 !important;
+}
+
+body.ig-redesign .ig-nav-login-btn:hover,
+body.ig-redesign .ig-nav-login-btn:focus-visible {
+  box-shadow: var(--shadow-glow-musgo);
+}
+
+body.ig-redesign .ig-version-banner {
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  background: rgba(12, 139, 139, 0.25);
+  border-bottom: 1px solid rgba(103, 232, 249, 0.15);
+}
+
+body.ig-redesign .ig-version-banner a {
+  color: var(--color-verde-marinho);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+body.ig-redesign .ig-live-feedback {
+  min-height: 1.25rem;
+}
+
+/* Banner promocional (feedback professor + atividade) */
+body.ig-redesign .ig-promo-banner {
+  background: linear-gradient(90deg, rgba(34, 197, 94, 0.22) 0%, rgba(12, 139, 139, 0.35) 50%, rgba(103, 232, 249, 0.15) 100%);
+  border-bottom: 1px solid rgba(34, 197, 94, 0.35);
+}
+
+body.ig-redesign .ig-promo-banner__title {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  color: var(--color-verde-marinho);
+  letter-spacing: 0.02em;
+}
+
+body.ig-redesign .ig-promo-banner__text {
+  font-family: var(--font-subtitle);
+  font-size: clamp(0.875rem, 2.2vw, 1rem);
+  color: rgba(226, 232, 240, 0.9);
+}
+
+/* Logo simplificado no mobile (feedback professor) */
+body.ig-redesign .ig-logo-mark {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--color-verde-marinho);
+  letter-spacing: 0.03em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+body.ig-redesign .ig-logo--full {
+  max-height: clamp(56px, 10vw, 90px);
+  width: auto;
+}
+
+@media (max-width: 991.98px) {
+  body.ig-redesign .ig-search-bar {
+    top: 3.75rem;
+  }
+
+  body.ig-redesign .ig-hero-badge {
+    font-size: 0.8125rem;
+  }
+
+  body.ig-redesign .ig-hero-lede {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  body.ig-redesign .ig-filter-chip {
+    font-size: 0.9375rem;
+    padding: 0.5rem 1.1rem;
+  }
+
+  body.ig-redesign .ig-game-card .ig-card-genre,
+  body.ig-redesign .ig-game-card .ig-card-price {
+    font-size: 0.875rem;
+  }
+
+  body.ig-redesign .ig-search-hint,
+  body.ig-redesign .ig-live-feedback {
+    font-size: 0.9375rem;
+  }
+
+  body.ig-redesign .ig-promo-banner .container {
+    flex-direction: column;
+    align-items: flex-start !important;
+    text-align: left;
+  }
+
+  body.ig-redesign .ig-promo-banner .btn {
+    width: 100%;
+    text-align: center;
+  }
+}

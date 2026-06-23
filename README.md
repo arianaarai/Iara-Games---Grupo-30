@@ -1,10 +1,49 @@
 # Iara Games — O coração dos jogos brasileiros
 
-> **FIAP · Etapa 3 · Sprint 03**  
+> **FIAP · Etapa 3 · Sprint 03** · **Etapa 4 · Redesign de Interação**  
 > **Status:** Em desenvolvimento  
 > **Conceito:** Uma plataforma de e-commerce mística e moderna, focada em dar visibilidade aos jogos produzidos no Brasil.
 
 A Iara Games não é apenas uma loja; é uma imersão nas águas do desenvolvimento nacional. O projeto utiliza uma estética *dark mode* profunda, inspirada nas lendas amazônicas, equilibrada com CSS moderno, **Bootstrap na casca** (home e páginas internas) e identidade visual alinhada ao manual da marca (evolução a partir da Etapa 2).
+
+## Redesign de Interação (Etapa 4)
+
+Atividade **Redesign de Interação: da análise ao protótipo** — análise crítica da home original e protótipo reformulado no mesmo repositório.
+
+| Versão | Arquivo | Descrição |
+| :--- | :--- | :--- |
+| **Home original (analisada)** | [`index.html`](index.html) | Versão Sprint 03 — base para o PDF de análise |
+| **Protótipo reformulado** | [`redesign/index.html`](redesign/index.html) | Melhorias de interação (CTAs, busca, filtros, acessibilidade) |
+
+### Como visualizar localmente
+
+Na raiz do repositório:
+
+```bash
+python3 -m http.server 8080
+```
+
+- Home original: http://localhost:8080/index.html  
+- Protótipo redesign: http://localhost:8080/redesign/
+
+### Deploy (GitHub Pages)
+
+1. Repositório → **Settings** → **Pages**
+2. Source: branch `main`, pasta **`/ (root)`**
+3. URLs após publicar:
+   - Original: `https://<usuario>.github.io/Iara-Games---Grupo-30/`
+   - Redesign: `https://<usuario>.github.io/Iara-Games---Grupo-30/redesign/`
+
+### O que mudou no protótipo (`redesign/`)
+
+- **Hero com CTAs** — “Explorar lançamentos” e “Ver ofertas” orientam o próximo passo
+- **Busca + filtros por gênero** — reduz trabalho manual de rolar a página inteira
+- **Feedback em tempo real** — região `aria-live` informa quantos jogos foram encontrados
+- **Estado vazio amigável** — mensagem clara + botão “Limpar busca” (sem culpar o usuário)
+- **Cards com contexto** — gênero, preço, `alt` descritivo e “Ver detalhes”
+- **Menu simplificado** — itens secundários agrupados em “Mais”; login destacado como “Entrar”
+
+Arquivos do redesign: `redesign/index.html`, `redesign/redesign.css`, `redesign/redesign.js` (reutiliza `assets/css/style.css` e imagens da identidade).
 
 ## Pesquisa de plataformas
 
@@ -102,8 +141,14 @@ A **home** e as páginas em `pages/` (shell **`ig-page`**) usam Bootstrap na nav
 │   ├── login.html          # Entrar / criar conta
 │   ├── suporte.html        # Formulário de feedback
 │   └── cadastro-jogo.html  # Formulário de cadastro de jogo
+├── redesign/
+│   ├── index.html          # Home reformulada (Etapa 4)
+│   ├── redesign.css        # Estilos específicos do redesign
+│   ├── redesign.js         # Busca e filtros
+│   └── README.md           # Como visualizar o protótipo
+├── .gitignore
 ├── 1-Ideias alternativas de design/   # Explorações e materiais de apoio
-├── index.html              # Página inicial (HTML semântico)
+├── index.html              # Página inicial original (HTML semântico)
 └── README.md
 ```
 
