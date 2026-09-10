@@ -45,6 +45,12 @@ python3 -m http.server 8080
 
 Arquivos do redesign: `redesign/index.html`, `redesign/redesign.css`, `redesign/redesign.js` (reutiliza `assets/css/style.css` e imagens da identidade).
 
+## Interatividade com JavaScript
+
+Validação de senha mínima
+
+Permitir que o usuário saiba imediatamente se a senha atende ao requisito mínimo de 8 caracteres durante o preenchimento do formulário.
+
 ## Pesquisa de plataformas
 
 Foram analisadas três plataformas de distribuição de jogos como referência de mercado:
