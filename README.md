@@ -47,9 +47,16 @@ Arquivos do redesign: `redesign/index.html`, `redesign/redesign.css`, `redesign/
 
 ## Interatividade com JavaScript
 
-Validação de senha mínima
+### Validação de senha mínima
 
 Permitir que o usuário saiba imediatamente se a senha atende ao requisito mínimo de 8 caracteres durante o preenchimento do formulário.
+
+A validação foi implementada com JavaScript externo em `assets/js/login.js`, utilizando o evento `input` para verificar a quantidade de caracteres.
+
+- Menos de 8 caracteres: mensagem de erro em vermelho.
+- 8 ou mais caracteres: mensagem de sucesso em verde.
+
+**Arquivo:** `assets/js/login.js`
 
 ## Pesquisa de plataformas
 
