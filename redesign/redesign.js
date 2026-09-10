@@ -45,10 +45,15 @@
       return;
     }
 
-    feedback.textContent =
-      visible === cards.length
-        ? 'Mostrando todos os jogos.'
-        : visible + ' jogo(s) encontrado(s).';
+    if (query) {
+  feedback.textContent =
+    visible + ' jogo(s) encontrado(s) para "' + query + '".';
+} else {
+  feedback.textContent =
+    visible === cards.length
+      ? 'Mostrando todos os jogos.'
+      : visible + ' jogo(s) encontrado(s).';
+}
 
     if (emptyState) {
       emptyState.classList.remove('is-visible');

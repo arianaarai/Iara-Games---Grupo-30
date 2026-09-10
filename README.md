@@ -38,7 +38,8 @@ python3 -m http.server 8080
 
 - **Hero com CTAs** — “Explorar lançamentos” e “Ver ofertas” orientam o próximo passo
 - **Busca + filtros por gênero** — reduz trabalho manual de rolar a página inteira
-- **Feedback em tempo real** — região `aria-live` informa quantos jogos foram encontrados
+- **Feedback em tempo real** — região aria-live informa quantos jogos foram encontrados e exibe o termo pesquisado
+- **Evolução da busca** — o contador agora informa também o termo pesquisado, deixando o retorno mais claro para o usuário
 - **Estado vazio amigável** — mensagem clara + botão “Limpar busca” (sem culpar o usuário)
 - **Cards com contexto** — gênero, preço, `alt` descritivo e “Ver detalhes”
 - **Menu simplificado** — itens secundários agrupados em “Mais”; login destacado como “Entrar”

@@ -12,6 +12,26 @@ Protótipo HTML da home reformulada. A **home original** (analisada no PDF) est�
 
 Reutiliza `../assets/css/style.css` e imagens em `../assets/images/`.
 
+## Interatividade com JavaScript — Busca e filtros
+
+A home reformulada possui recursos de interatividade desenvolvidos em JavaScript para facilitar a descoberta de jogos.
+
+### Funcionalidades implementadas
+
+- Busca de jogos por nome ou gênero em tempo real
+- Filtro por gênero: Todos, Aventura, RPG e Corrida
+- Contador de jogos encontrados
+- Mensagem de estado vazio quando nenhum jogo corresponde à busca
+- Botão para limpar a busca e os filtros
+- Feedback da pesquisa mostrando o termo pesquisado
+
+### Como funciona
+
+O JavaScript utiliza o evento `input` para atualizar os resultados enquanto o usuário digita e o evento `click` para os filtros e para o botão de limpar.
+
+Os elementos da página são selecionados com métodos como `querySelectorAll`. As classes dos cards são alteradas com `classList` para mostrar ou esconder os jogos, e `textContent` é utilizado para atualizar o contador e as mensagens de feedback.
+
+Exemplo: ao pesquisar por "RPG", a página mostra apenas os jogos correspondentes e informa quantos resultados foram encontrados.
 ## Visualizar localmente
 
 Na **raiz** do repositório:
