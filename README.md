@@ -1,6 +1,6 @@
 # Iara Games — O coração dos jogos brasileiros
 
-> **FIAP · Grupo 3** · Etapa 3 · Sprint 03 · **Etapa 4 · Redesign de Interação**  
+> **FIAP · Grupo 3** · Etapa 3 · Sprint 03 · **Etapa 4 · Redesign de Interação** · **Etapa 5 · Interatividade com JavaScript**  
 > **Status:** Em desenvolvimento  
 > **Conceito:** Uma plataforma de e-commerce mística e moderna, focada em dar visibilidade aos jogos produzidos no Brasil.
 
@@ -46,7 +46,28 @@ python3 -m http.server 8080
 
 Arquivos do redesign: `redesign/index.html`, `redesign/redesign.css`, `redesign/redesign.js` (reutiliza `assets/css/style.css` e imagens da identidade).
 
-## Interatividade com JavaScript
+## Interatividade com JavaScript (Etapa 5)
+
+Na etapa anterior o grupo analisou problemas de interação e entregou o protótipo em HTML e CSS (`redesign/`, `pages/login.html`, `pages/suporte.html`). Nesta etapa o mesmo repositório foi evoluído: as páginas já existentes ganharam comportamentos dinâmicos por JavaScript externo, sem refazer o visual.
+
+- **Home (`redesign/`)** — a busca e os filtros, que na Etapa 4 eram proposta de interação, passaram a filtrar os cards de fato.
+- **Login** — o formulário de criar conta agora avisa na hora se a senha tem menos de 8 caracteres.
+- **Suporte** — o contato, que era só estático, agora valida campos, conta caracteres, controla o botão de envio e confirma o feedback na tela.
+
+O JavaScript fica em arquivos externos vinculados ao HTML.
+
+### Busca e filtros
+
+Permitir que o usuário encontre jogos sem precisar rolar a página inteira.
+
+A busca e os filtros foram implementados com JavaScript externo em `redesign/redesign.js`, utilizando os eventos `input` e `click` para filtrar os cards.
+
+- Busca por nome do jogo
+- Filtro por gênero
+- Contador de resultados em tempo real, incluindo o termo pesquisado
+- Estado vazio + botão “Limpar busca”
+
+**Arquivo:** `redesign/redesign.js`
 
 ### Validação de senha mínima
 
@@ -58,6 +79,19 @@ A validação foi implementada com JavaScript externo em `assets/js/login.js`, u
 - 8 ou mais caracteres: mensagem de sucesso em verde.
 
 **Arquivo:** `assets/js/login.js`
+
+### Formulário de suporte
+
+Permitir que o usuário saiba o que falta no contato e receba confirmação depois de enviar o feedback.
+
+A interatividade foi implementada com JavaScript externo em `assets/js/suporte.js`, utilizando os eventos `input`, `blur`, `change` e `submit` para validar os campos e atualizar a tela.
+
+- Contador de caracteres na descrição (mínimo 20, máximo 500).
+- Validação de e-mail, tipo de feedback e descrição: mensagem de erro em vermelho ao sair do campo.
+- Botão “Enviar feedback” desabilitado até o formulário ficar válido.
+- Faixa verde de confirmação após o envio, sem recarregar a página.
+
+**Arquivo:** `assets/js/suporte.js`
 
 ## Pesquisa de plataformas
 
@@ -145,6 +179,9 @@ A **home** e as páginas em `pages/` (shell **`ig-page`**) usam Bootstrap na nav
 ├── assets/
 │   ├── css/
 │   │   └── style.css       # Estilos globais e design tokens
+│   ├── js/
+│   │   ├── login.js        # Validação de senha (login)
+│   │   └── suporte.js      # Contador, validação e envio (suporte)
 │   ├── images/             # Imagens do hero, capas dos cards, etc.
 │   └── videos/             # Vídeos de apoio (Fase 3); uso opcional no HTML/CSS
 ├── pages/
@@ -153,7 +190,7 @@ A **home** e as páginas em `pages/` (shell **`ig-page`**) usam Bootstrap na nav
 │   ├── forum.html          # Stub / em evolução
 │   ├── comunidade.html      # Chat por jogo / conversa aberta (protótipo)
 │   ├── login.html          # Entrar / criar conta
-│   ├── suporte.html        # Formulário de feedback
+│   ├── suporte.html        # Feedback com JS (contador, validação, envio)
 │   └── cadastro-jogo.html  # Formulário de cadastro de jogo
 ├── redesign/
 │   ├── index.html          # Home reformulada (Etapa 4)

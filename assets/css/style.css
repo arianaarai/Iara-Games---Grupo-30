@@ -2121,3 +2121,88 @@ img {
     margin-bottom: 1rem;
     }
 }
+
+/* Suporte — feedback em tempo real (Etapa 5) */
+.form-card__hint,
+.form-card__submit-hint {
+    margin: 0 0 1rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: rgba(226, 232, 240, 0.82);
+}
+
+.form-card__submit-hint {
+    margin: 0;
+}
+
+.form-field__message {
+    min-height: 1.25rem;
+    font-size: 0.85rem;
+    color: #ff8a8a;
+}
+
+.form-field__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.form-field__counter {
+    margin-left: auto;
+    font-family: var(--font-subtitle);
+    font-size: 0.85rem;
+    color: rgba(226, 232, 240, 0.7);
+}
+
+.form-field__counter.is-warn {
+    color: #fbbf24;
+}
+
+.form-field__counter.is-ok {
+    color: var(--color-verde-musgo);
+}
+
+.form-field__counter.is-limit {
+    color: #ff8a8a;
+}
+
+.form-field input.is-invalid,
+.form-field textarea.is-invalid,
+.form-field select.is-invalid {
+    border-color: #ff8a8a;
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.16);
+}
+
+.form-field input.is-valid,
+.form-field textarea.is-valid,
+.form-field select.is-valid {
+    border-color: rgba(34, 197, 94, 0.7);
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.14);
+}
+
+.form-success {
+    margin-bottom: 1rem;
+    padding: 0.95rem 1.1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(34, 197, 94, 0.45);
+    background: rgba(34, 197, 94, 0.16);
+    color: #bbf7d0;
+    font-family: var(--font-subtitle);
+    font-weight: 600;
+}
+
+.form-success.is-visible {
+    display: block;
+}
+
+body.ig-page .form-card .btn-primary:disabled,
+body.ig-page .form-card .btn-primary[disabled] {
+    background: rgba(34, 197, 94, 0.28) !important;
+    color: rgba(226, 232, 240, 0.72) !important;
+    box-shadow: none !important;
+    transform: none !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}

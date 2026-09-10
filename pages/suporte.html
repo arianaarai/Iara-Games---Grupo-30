@@ -61,18 +61,20 @@
             <div class="section__inner">
                 <h2 id="form-feedback-heading" class="visually-hidden">Formulário de feedback</h2>
                 <div class="form-card">
-                    <form class="form-card__form" action="#" method="post">
+                    <form class="form-card__form" id="form-suporte" action="#" method="get" novalidate>
                         <fieldset class="form-card__fieldset">
                             <legend class="form-card__legend">Feedback</legend>
+                            <p class="form-card__hint">Campos com * são obrigatórios. O botão de envio só libera quando e-mail, tipo e descrição estiverem válidos.</p>
 
                             <div class="form-grid">
-                                <label class="form-field">
-                                    <span>E-mail para identificação</span>
-                                    <input type="email" name="email-feedback" placeholder="seu@email.com" required autocomplete="email">
+                                <label class="form-field" for="email-feedback">
+                                    <span>E-mail para identificação *</span>
+                                    <input id="email-feedback" type="email" name="email-feedback" placeholder="seu@email.com" required autocomplete="email" aria-describedby="erro-email-feedback">
+                                    <span class="form-field__message" id="erro-email-feedback" role="alert"></span>
                                 </label>
-                                <label class="form-field">
+                                <label class="form-field" for="tipo-jogo-joga">
                                     <span>Tipo de jogo que você joga</span>
-                                    <select name="tipo-jogo-joga">
+                                    <select id="tipo-jogo-joga" name="tipo-jogo-joga">
                                         <option value="">Selecione</option>
                                         <option value="aventura">Aventura</option>
                                         <option value="rpg">RPG</option>
@@ -85,9 +87,9 @@
                                         <option value="outro">Outro</option>
                                     </select>
                                 </label>
-                                <label class="form-field">
-                                    <span>Tipo de feedback</span>
-                                    <select name="tipo-feedback">
+                                <label class="form-field" for="tipo-feedback">
+                                    <span>Tipo de feedback *</span>
+                                    <select id="tipo-feedback" name="tipo-feedback" required aria-describedby="erro-tipo-feedback">
                                         <option value="">Selecione</option>
                                         <option value="sugestao">Sugestão</option>
                                         <option value="bug">Relato de bug</option>
@@ -96,10 +98,11 @@
                                         <option value="duvida">Dúvida</option>
                                         <option value="outro">Outro</option>
                                     </select>
+                                    <span class="form-field__message" id="erro-tipo-feedback" role="alert"></span>
                                 </label>
-                                <label class="form-field">
+                                <label class="form-field" for="nota-site">
                                     <span>Nota para o site (1-5)</span>
-                                    <select name="nota-site">
+                                    <select id="nota-site" name="nota-site">
                                         <option value="">Selecione</option>
                                         <option value="1">1 - Muito ruim</option>
                                         <option value="2">2 - Ruim</option>
@@ -110,9 +113,13 @@
                                 </label>
                             </div>
 
-                            <label class="form-field form-field--full">
-                                <span>Descreva seu feedback</span>
-                                <textarea name="descricao-feedback" rows="5" placeholder="Conte-nos mais detalhes sobre sua experiência, sugestões ou problemas encontrados"></textarea>
+                            <label class="form-field form-field--full" for="descricao-feedback">
+                                <span>Descreva seu feedback *</span>
+                                <textarea id="descricao-feedback" name="descricao-feedback" rows="5" maxlength="500" required aria-describedby="erro-descricao-feedback contador-caracteres" placeholder="Conte-nos mais detalhes sobre sua experiência, sugestões ou problemas encontrados"></textarea>
+                                <div class="form-field__meta">
+                                    <span class="form-field__message" id="erro-descricao-feedback" role="alert"></span>
+                                    <span class="form-field__counter" id="contador-caracteres" aria-live="polite">0 / 500</span>
+                                </div>
                             </label>
                         </fieldset>
 
@@ -120,20 +127,26 @@
                             <legend class="form-card__legend">Formas de contato</legend>
 
                             <div class="form-grid">
-                                <label class="form-field">
+                                <label class="form-field" for="telefone">
                                     <span>Telefone (opcional)</span>
-                                    <input type="tel" name="telefone" placeholder="(11) 99999-9999" autocomplete="tel">
+                                    <input id="telefone" type="tel" name="telefone" placeholder="(11) 99999-9999" autocomplete="tel">
                                 </label>
-                                <label class="form-field">
+                                <label class="form-field" for="whatsapp">
                                     <span>WhatsApp (opcional)</span>
-                                    <input type="tel" name="whatsapp" placeholder="(11) 99999-9999" autocomplete="tel">
+                                    <input id="whatsapp" type="tel" name="whatsapp" placeholder="(11) 99999-9999" autocomplete="tel">
                                 </label>
                             </div>
                         </fieldset>
 
+                        <p class="form-card__submit-hint" id="hint-envio">Preencha os campos obrigatórios para habilitar o envio.</p>
+
+                        <div class="form-success" id="feedback-sucesso" hidden role="status" aria-live="polite">
+                            Feedback enviado. Obrigado por ajudar a Iara Games a melhorar.
+                        </div>
+
                         <div class="form-card__actions">
-                            <button class="btn btn-primary" type="submit">Enviar feedback</button>
-                            <button class="btn btn-secondary" type="reset">Limpar</button>
+                            <button class="btn btn-primary" id="btn-enviar-feedback" type="submit" disabled>Enviar feedback</button>
+                            <button class="btn btn-secondary" id="btn-limpar-feedback" type="reset">Limpar</button>
                         </div>
                     </form>
                 </div>
@@ -157,5 +170,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../assets/js/suporte.js"></script>
 </body>
 </html>
