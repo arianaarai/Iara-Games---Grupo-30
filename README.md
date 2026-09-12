@@ -96,14 +96,15 @@ A interatividade foi implementada com JavaScript externo em `assets/js/suporte.j
 
 ### Cadastro de jogo
 
-Permitir que o desenvolvedor cadastre o jogo com mais clareza, sem preencher um formulário longo de uma vez só.
+Permitir que o desenvolvedor cadastre o jogo com mais clareza, sem preencher um formulário longo de uma vez só, e revise os dados antes de enviar.
 
-A interatividade foi implementada com JavaScript externo em `assets/js/cadastro-jogo.js`, utilizando os eventos `change`, `click`, `input`, `blur` e `submit`.
+A interatividade foi implementada com JavaScript externo em `assets/js/cadastro-jogo.js`, utilizando os eventos `change`, `click`, `input`, `blur` e `submit` para mostrar campos, validar e montar a prévia.
 
-- Campos condicionais: “Já disponível” mostra o link; “Em desenvolvimento” mostra a previsão.
-- Validação de e-mail, nomes, gênero, status, descrição e link ou previsão.
-- Botão “Visualizar cadastro” monta o resumo antes do envio.
-- “Confirmar e enviar” só libera depois da prévia; faixa verde confirma o envio.
+- Campos condicionais: “Já disponível” mostra o link do jogo; “Em desenvolvimento” mostra a previsão de lançamento.
+- Contador de caracteres na descrição (mínimo 30, máximo 1000).
+- Validação de e-mail, nomes, gênero, status, descrição e link ou previsão: mensagem de erro em vermelho ao sair do campo.
+- Botão “Visualizar cadastro” desabilitado até o formulário ficar válido; monta o resumo antes do envio.
+- “Confirmar e enviar” só libera depois da prévia; faixa verde confirma o envio, sem recarregar a página.
 
 **Arquivo:** `assets/js/cadastro-jogo.js`
 
