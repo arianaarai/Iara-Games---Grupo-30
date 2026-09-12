@@ -61,17 +61,19 @@
             <div class="section__inner">
                 <h2 id="form-cadastro-heading" class="visually-hidden">Formulário de cadastro de jogo</h2>
                 <div class="form-card">
-                    <form class="form-card__form" action="#" method="post">
+                    <form class="form-card__form" id="form-cadastro-jogo" action="#" method="get" novalidate>
                         <fieldset class="form-card__fieldset">
                             <legend class="form-card__legend">Contato do estúdio</legend>
                             <div class="form-grid">
-                                <label class="form-field">
+                                <label class="form-field" for="email-estudio">
                                     <span>E-mail do responsável</span>
-                                    <input type="email" name="email-estudio" placeholder="contato@estudio.com" required autocomplete="email">
+                                    <input id="email-estudio" type="email" name="email-estudio" placeholder="contato@estudio.com" required autocomplete="email" aria-describedby="erro-email-estudio">
+                                    <span class="form-field__message" id="erro-email-estudio" role="alert"></span>
                                 </label>
-                                <label class="form-field">
+                                <label class="form-field" for="nome-estudio">
                                     <span>Nome do estúdio ou autoria</span>
-                                    <input type="text" name="nome-estudio" placeholder="Estúdio / autoria" required autocomplete="organization">
+                                    <input id="nome-estudio" type="text" name="nome-estudio" placeholder="Estúdio / autoria" required autocomplete="organization" aria-describedby="erro-nome-estudio">
+                                    <span class="form-field__message" id="erro-nome-estudio" role="alert"></span>
                                 </label>
                             </div>
                         </fieldset>
@@ -79,27 +81,96 @@
                         <fieldset class="form-card__fieldset">
                             <legend class="form-card__legend">Sobre o jogo</legend>
                             <div class="form-grid">
-                                <label class="form-field">
+                                <label class="form-field" for="nome-jogo">
                                     <span>Nome do jogo</span>
-                                    <input type="text" name="nome-jogo" placeholder="Nome do jogo" required>
+                                    <input id="nome-jogo" type="text" name="nome-jogo" placeholder="Nome do jogo" required aria-describedby="erro-nome-jogo">
+                                    <span class="form-field__message" id="erro-nome-jogo" role="alert"></span>
                                 </label>
-                                <label class="form-field">
+                                <label class="form-field" for="genero-jogo">
                                     <span>Gênero</span>
-                                    <input type="text" name="genero-jogo" placeholder="Aventura, RPG, ação..." required>
+                                    <input id="genero-jogo" type="text" name="genero-jogo" placeholder="Aventura, RPG, ação..." required aria-describedby="erro-genero-jogo">
+                                    <span class="form-field__message" id="erro-genero-jogo" role="alert"></span>
                                 </label>
-                                <label class="form-field form-field--full">
+                                <label class="form-field form-field--full" for="status-jogo">
+                                    <span>Status do jogo</span>
+                                    <select id="status-jogo" name="status-jogo" required aria-describedby="erro-status-jogo">
+                                        <option value="">Selecione uma opção</option>
+                                        <option value="disponivel">Já disponível para jogar</option>
+                                        <option value="desenvolvimento">Em desenvolvimento</option>
+                                    </select>
+                                    <span class="form-field__message" id="erro-status-jogo" role="alert"></span>
+                                </label>
+                                <label class="form-field form-field--full" for="descricao-jogo">
                                     <span>Descrição</span>
-                                    <textarea name="descricao-jogo" rows="4" placeholder="Breve descrição do jogo" required></textarea>
+                                    <textarea id="descricao-jogo" name="descricao-jogo" rows="4" minlength="30" maxlength="1000" placeholder="Breve descrição do jogo" required aria-describedby="erro-descricao-jogo contador-descricao-jogo"></textarea>
+                                    <div class="form-field__meta">
+                                        <span class="form-field__message" id="erro-descricao-jogo" role="alert"></span>
+                                        <span class="form-field__counter" id="contador-descricao-jogo" aria-live="polite">0 / 1000</span>
+                                    </div>
                                 </label>
-                                <label class="form-field">
+                                <label class="form-field form-field--full" id="campo-link-jogo" for="link-jogo">
                                     <span>Link de página ou download</span>
-                                    <input type="url" name="link-jogo" placeholder="https://" required>
+                                    <input id="link-jogo" type="url" name="link-jogo" placeholder="https://" required aria-describedby="erro-link-jogo">
+                                    <span class="form-field__message" id="erro-link-jogo" role="alert"></span>
+                                </label>
+                                <label class="form-field form-field--full" id="campo-previsao-jogo" for="previsao-jogo" hidden>
+                                    <span>Previsão de lançamento</span>
+                                    <input id="previsao-jogo" type="text" name="previsao-jogo" placeholder="Ex.: outubro de 2026" aria-describedby="erro-previsao-jogo">
+                                    <span class="form-field__message" id="erro-previsao-jogo" role="alert"></span>
                                 </label>
                             </div>
                         </fieldset>
 
+                        <p class="form-card__submit-hint" id="hint-cadastro">Preencha os campos obrigatórios para visualizar o cadastro.</p>
+
+                        <section class="form-preview" id="preview-cadastro" hidden aria-labelledby="preview-cadastro-heading">
+                            <div class="form-preview__header">
+                                <div>
+                                    <p class="form-preview__eyebrow">Prévia do cadastro</p>
+                                    <h3 class="form-preview__title" id="preview-cadastro-heading">Confira os dados do jogo</h3>
+                                </div>
+                                <span class="form-preview__status">Pronto para revisão</span>
+                            </div>
+                            <div class="form-preview__grid">
+                                <div class="form-preview__item">
+                                    <span>Estúdio ou autoria</span>
+                                    <strong id="preview-estudio"></strong>
+                                </div>
+                                <div class="form-preview__item">
+                                    <span>Responsável</span>
+                                    <strong id="preview-email"></strong>
+                                </div>
+                                <div class="form-preview__item">
+                                    <span>Jogo</span>
+                                    <strong id="preview-jogo"></strong>
+                                </div>
+                                <div class="form-preview__item">
+                                    <span>Gênero</span>
+                                    <strong id="preview-genero"></strong>
+                                </div>
+                                <div class="form-preview__item">
+                                    <span>Status</span>
+                                    <strong id="preview-status"></strong>
+                                </div>
+                                <div class="form-preview__item form-preview__item--full">
+                                    <span>Descrição</span>
+                                    <p id="preview-descricao"></p>
+                                </div>
+                                <div class="form-preview__item form-preview__item--full">
+                                    <span id="preview-referencia-label">Link do jogo</span>
+                                    <a id="preview-link" href="#" target="_blank" rel="noopener noreferrer"></a>
+                                    <strong id="preview-previsao"></strong>
+                                </div>
+                            </div>
+                        </section>
+
+                        <div class="form-success" id="cadastro-sucesso" hidden role="status" aria-live="polite">
+                            Cadastro recebido. A equipe da Iara Games analisará os dados enviados.
+                        </div>
+
                         <div class="form-card__actions">
-                            <button class="btn btn-primary" type="submit">Enviar cadastro</button>
+                            <button class="btn btn-secondary" id="btn-visualizar-cadastro" type="button" disabled>Visualizar cadastro</button>
+                            <button class="btn btn-primary" id="btn-enviar-cadastro" type="submit" disabled>Confirmar e enviar</button>
                             <button class="btn btn-secondary" type="reset">Limpar</button>
                         </div>
                     </form>
@@ -124,5 +195,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../assets/js/cadastro-jogo.js"></script>
 </body>
 </html>

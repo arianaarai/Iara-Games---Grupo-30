@@ -53,6 +53,7 @@ Na etapa anterior o grupo analisou problemas de interação e entregou o protót
 - **Home (`redesign/`)** — a busca e os filtros, que na Etapa 4 eram proposta de interação, passaram a filtrar os cards de fato.
 - **Login** — o formulário de criar conta agora avisa na hora se a senha tem menos de 8 caracteres.
 - **Suporte** — o contato, que era só estático, agora valida campos, conta caracteres, controla o botão de envio e confirma o feedback na tela.
+- **Cadastro de jogo** — o formulário longo agora mostra campos conforme o status, valida os dados e exibe um resumo antes do envio.
 
 O JavaScript fica em arquivos externos vinculados ao HTML.
 
@@ -92,6 +93,19 @@ A interatividade foi implementada com JavaScript externo em `assets/js/suporte.j
 - Faixa verde de confirmação após o envio, sem recarregar a página.
 
 **Arquivo:** `assets/js/suporte.js`
+
+### Cadastro de jogo
+
+Permitir que o desenvolvedor cadastre o jogo com mais clareza, sem preencher um formulário longo de uma vez só.
+
+A interatividade foi implementada com JavaScript externo em `assets/js/cadastro-jogo.js`, utilizando os eventos `change`, `click`, `input`, `blur` e `submit`.
+
+- Campos condicionais: “Já disponível” mostra o link; “Em desenvolvimento” mostra a previsão.
+- Validação de e-mail, nomes, gênero, status, descrição e link ou previsão.
+- Botão “Visualizar cadastro” monta o resumo antes do envio.
+- “Confirmar e enviar” só libera depois da prévia; faixa verde confirma o envio.
+
+**Arquivo:** `assets/js/cadastro-jogo.js`
 
 ## Pesquisa de plataformas
 
@@ -180,8 +194,9 @@ A **home** e as páginas em `pages/` (shell **`ig-page`**) usam Bootstrap na nav
 │   ├── css/
 │   │   └── style.css       # Estilos globais e design tokens
 │   ├── js/
-│   │   ├── login.js        # Validação de senha (login)
-│   │   └── suporte.js      # Contador, validação e envio (suporte)
+│   │   ├── login.js         # Validação de senha (login)
+│   │   ├── suporte.js       # Contador, validação e envio (suporte)
+│   │   └── cadastro-jogo.js # Campos condicionais, preview e envio
 │   ├── images/             # Imagens do hero, capas dos cards, etc.
 │   └── videos/             # Vídeos de apoio (Fase 3); uso opcional no HTML/CSS
 ├── pages/
@@ -191,7 +206,7 @@ A **home** e as páginas em `pages/` (shell **`ig-page`**) usam Bootstrap na nav
 │   ├── comunidade.html      # Chat por jogo / conversa aberta (protótipo)
 │   ├── login.html          # Entrar / criar conta
 │   ├── suporte.html        # Feedback com JS (contador, validação, envio)
-│   └── cadastro-jogo.html  # Formulário de cadastro de jogo
+│   └── cadastro-jogo.html  # Cadastro com JS (campos condicionais e preview)
 ├── redesign/
 │   ├── index.html          # Home reformulada (Etapa 4)
 │   ├── redesign.css        # Estilos específicos do redesign
