@@ -1,6 +1,6 @@
 # Iara Games — O coração dos jogos brasileiros
 
-> **FIAP · Grupo 3** · Etapa 3 · Sprint 03 · **Etapa 4 · Redesign de Interação** · **Etapa 5 · Interatividade com JavaScript**  
+> **FIAP · Grupo 3** · Etapa 3 · Sprint 03 · **Etapa 4 · Redesign de Interação** · **Etapa 5 · Interatividade com JavaScript** · **Etapa 6 · Loja em React**  
 > **Status:** Em desenvolvimento  
 > **Conceito:** Uma plataforma de e-commerce mística e moderna, focada em dar visibilidade aos jogos produzidos no Brasil.
 
@@ -56,6 +56,25 @@ Na etapa anterior o grupo analisou problemas de interação e entregou o protót
 - **Cadastro de jogo** — o formulário longo agora mostra campos conforme o status, valida os dados e exibe um resumo antes do envio.
 
 O JavaScript fica em arquivos externos vinculados ao HTML.
+
+## Loja em React (Etapa 6)
+
+A Loja deixou de ser só o aviso de página em construção. O topo, o rodapé e as outras páginas continuam em HTML. O miolo da Loja passou a ser React.
+
+Nesta etapa a lista e a página de um jogo já existem, ainda sem o catálogo. Dá para ir de uma para a outra e voltar. Biblioteca, fórum, comunidade, suporte, cadastro e login seguem nos arquivos que já estavam prontos.
+
+### Como visualizar a Loja
+
+Na raiz do repositório:
+
+```bash
+npm install
+npm run dev
+```
+
+- Loja: http://127.0.0.1:5173/pages/loja.html
+
+O comando `python3 -m http.server` continua servindo a home e as páginas em HTML. A Loja precisa do `npm run dev`, porque o React é carregado pelo Vite.
 
 ### Busca e filtros
 
@@ -174,7 +193,7 @@ Fluxo em **HTML e CSS**; formulários com `action="#"` (sem back-end), foco em s
 | Página | Arquivo | Conteúdo |
 | :--- | :--- | :--- |
 | Home | `index.html` | Hero, lançamentos, ofertas, destaques |
-| Loja | `pages/loja.html` | Página mínima (stub); catálogo completo na próxima evolução |
+| Loja | `pages/loja.html` | React: lista e página do jogo (catálogo ainda entra) |
 | Biblioteca | `pages/biblioteca.html` | Página mínima (stub) |
 | Fórum | `pages/forum.html` | Página mínima (stub) |
 | Comunidade | `pages/comunidade.html` | Salas de chat (protótipo front-end) |
@@ -182,7 +201,7 @@ Fluxo em **HTML e CSS**; formulários com `action="#"` (sem back-end), foco em s
 | Suporte | `pages/suporte.html` | Feedback e contato para jogadores/visitantes |
 | Cadastro de jogo | `pages/cadastro-jogo.html` | Envio de dados do jogo por estúdios/desenvolvedores |
 
-A **home** e as páginas em `pages/` (shell **`ig-page`**) usam Bootstrap na navegação e apontam para essas rotas; Loja, Biblioteca e Fórum são **stubs** acessíveis para evitar links quebrados até a implementação completa.
+A **home** e as páginas em `pages/` (shell **`ig-page`**) usam Bootstrap na navegação e apontam para essas rotas. A Loja abre em React. Biblioteca e Fórum seguem como páginas mínimas até a implementação completa.
 
 > **Entrega FIAP (Etapa 3):** persona, ESG, justificativas de UX/UI e evolução do protótipo ao longo das sprints devem constar no **PDF** enviado na plataforma; este README resume o escopo técnico do repositório na **Sprint 03**.
 
@@ -200,8 +219,17 @@ A **home** e as páginas em `pages/` (shell **`ig-page`**) usam Bootstrap na nav
 │   │   └── cadastro-jogo.js # Campos condicionais, preview e envio
 │   ├── images/             # Imagens do hero, capas dos cards, etc.
 │   └── videos/             # Vídeos de apoio (Fase 3); uso opcional no HTML/CSS
+├── src/
+│   ├── main.jsx            # Entrada do React na Loja
+│   ├── App.jsx             # Rotas da lista e da página do jogo
+│   └── pages/
+│       ├── LojaPage.jsx    # Lista, ainda sem os cards
+│       └── JogoPage.jsx    # Página do jogo, ainda sem os dados
+├── package.json
+├── package-lock.json
+├── vite.config.js
 ├── pages/
-│   ├── loja.html           # Stub / em evolução
+│   ├── loja.html           # Casca da Loja; o miolo é React
 │   ├── biblioteca.html     # Stub / em evolução
 │   ├── forum.html          # Stub / em evolução
 │   ├── comunidade.html      # Chat por jogo / conversa aberta (protótipo)
