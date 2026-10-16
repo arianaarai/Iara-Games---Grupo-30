@@ -57,25 +57,6 @@ Na etapa anterior o grupo analisou problemas de interação e entregou o protót
 
 O JavaScript fica em arquivos externos vinculados ao HTML.
 
-## Loja em React (Etapa 6)
-
-A Loja deixou de ser só o aviso de página em construção. O topo, o rodapé e as outras páginas continuam em HTML. O miolo da Loja passou a ser React.
-
-Nesta etapa a lista e a página de um jogo já existem, ainda sem o catálogo. Dá para ir de uma para a outra e voltar. Biblioteca, fórum, comunidade, suporte, cadastro e login seguem nos arquivos que já estavam prontos.
-
-### Como visualizar a Loja
-
-Na raiz do repositório:
-
-```bash
-npm install
-npm run dev
-```
-
-- Loja: http://127.0.0.1:5173/pages/loja.html
-
-O comando `python3 -m http.server` continua servindo a home e as páginas em HTML. A Loja precisa do `npm run dev`, porque o React é carregado pelo Vite.
-
 ### Busca e filtros
 
 Permitir que o usuário encontre jogos sem precisar rolar a página inteira.
@@ -126,6 +107,27 @@ A interatividade foi implementada com JavaScript externo em `assets/js/cadastro-
 - “Confirmar e enviar” só libera depois da prévia; faixa verde confirma o envio, sem recarregar a página.
 
 **Arquivo:** `assets/js/cadastro-jogo.js`
+
+## Loja em React (Etapa 6)
+
+O que entrou nesta etapa:
+
+- A página da Loja deixou de ser o aviso "em construção".
+- O miolo da Loja agora é React. O topo, o rodapé e o visual continuam os do site.
+- Existem duas telas: a lista de jogos e a página de um jogo. Dá para ir de uma para a outra e voltar.
+- O catálogo, a busca e os dados do jogo ainda não estão nessa página. Isso entra em seguida.
+- Home, biblioteca, fórum, comunidade, login, suporte e cadastro de jogo continuam em HTML, como nas etapas anteriores.
+
+Para ver a Loja, na raiz do repositório:
+
+```bash
+npm install
+npm run dev
+```
+
+Abre em http://127.0.0.1:5173/pages/loja.html.
+
+O `python3 -m http.server` continua servindo a home e as páginas em HTML. A Loja precisa do `npm run dev`.
 
 ## Pesquisa de plataformas
 
