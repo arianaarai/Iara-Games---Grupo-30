@@ -1,26 +1,25 @@
 
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-
-const jogoExemplo = {
-  nome: 'Corrida Florestal',
-  preco: 'R$ 139,90',
-  genero: 'Corrida',
-  capa: '/assets/images/lagoa mistica.png',
-  descricao:
-    'Um jogo de corrida com cenarios inspirados na natureza. Descricao provisoria para demonstrar a pagina.'
-}
+import { jogos } from '../data/jogos.js'
 
 export function JogoPage() {
   const { id } = useParams()
   const [favorito, setFavorito] = useState(false)
 
-  if (id !== 'exemplo') {
+  // Mantem o link de exemplo funcionando
+  const jogoId = id === 'exemplo' ? 'corrida-florestal' : id
+
+  // Encontra o jogo pelo ID da URL
+  const jogo = jogos.find((item) => item.id === jogoId)
+
+  if (!jogo) {
     return (
       <section className="section section--page-intro">
         <div className="section__inner">
           <h1>Jogo não encontrado</h1>
-          <Link to="/">Voltar para a loja</Link>
+          <p>Não encontramos esse jogo no catálogo.</p>
+          <Link to="/">← Voltar para a loja</Link>
         </div>
       </section>
     )
@@ -36,27 +35,27 @@ export function JogoPage() {
         <div className="row g-4 align-items-center">
           <div className="col-12 col-lg-5">
             <img
-              src={jogoExemplo.capa}
-              alt={`Capa do jogo ${jogoExemplo.nome}`}
+              src={jogo.capa}
+              alt={`Capa do jogo ${jogo.nome}`}
               className="img-fluid rounded-4 w-100"
             />
           </div>
 
           <div className="col-12 col-lg-7">
             <h1 className="section__title">
-              {jogoExemplo.nome}
+              {jogo.nome}
             </h1>
 
             <p>
-              <strong>Gênero:</strong> {jogoExemplo.genero}
+              <strong>Gênero:</strong> {jogo.genero}
             </p>
 
             <h2 className="h3 text-success">
-              {jogoExemplo.preco}
+              {jogo.preco}
             </h2>
 
             <p className="mt-3">
-              {jogoExemplo.descricao}
+              {jogo.descricao}
             </p>
 
             <button
