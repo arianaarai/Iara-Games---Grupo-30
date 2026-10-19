@@ -2,16 +2,20 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { jogos } from '../data/jogos.js'
+import { alternarFavorito, lerFavoritos } from '../favoritos.js'
 
 export function JogoPage() {
   const { id } = useParams()
-  const [favorito, setFavorito] = useState(false)
+  const [favoritos, setFavoritos] = useState(lerFavoritos)
 
-  // Mantem o link de exemplo funcionando
   const jogoId = id === 'exemplo' ? 'corrida-florestal' : id
-
-  // Encontra o jogo pelo ID da URL
   const jogo = jogos.find((item) => item.id === jogoId)
+  const favorito = jogo ? favoritos.includes(jogo.id) : false
+
+  function aoFavoritar() {
+    if (!jogo) return
+    setFavoritos(alternarFavorito(jogo.id))
+  }
 
   if (!jogo) {
     return (
@@ -62,7 +66,7 @@ export function JogoPage() {
               type="button"
               className="btn btn-success mt-3"
               aria-pressed={favorito}
-              onClick={() => setFavorito(!favorito)}
+              onClick={aoFavoritar}
             >
               {favorito
                 ? '♥ Remover dos favoritos'
@@ -70,9 +74,7 @@ export function JogoPage() {
             </button>
 
             <p role="status" className="mt-3">
-              {favorito
-                ? 'Jogo adicionado aos favoritos!'
-                : ''}
+              {favorito ? 'Este jogo está nos seus favoritos.' : ''}
             </p>
           </div>
         </div>

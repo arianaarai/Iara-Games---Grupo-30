@@ -2294,6 +2294,283 @@ img {
     }
 }
 
+body.ig-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body.ig-page > main {
+    flex: 1;
+}
+
+.loja-esqueleto {
+    min-height: 320px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.04), rgba(103, 232, 249, 0.12), rgba(255, 255, 255, 0.04));
+    background-size: 200% 100%;
+    animation: loja-carregando 1.2s ease-in-out infinite;
+}
+
+@keyframes loja-carregando {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+}
+
+.loja-filtros {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    margin: 0 auto 1.5rem;
+    width: 100%;
+}
+
+.loja-filtros__genero,
+.loja-filtros__busca {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem 0.85rem;
+}
+
+.loja-filtros label {
+    font-family: var(--font-subtitle);
+    font-size: 0.95rem;
+}
+
+.loja-filtros input[type="search"],
+.loja-filtros select {
+    min-height: 44px;
+    padding: 0.55rem 0.8rem;
+    color: var(--color-text);
+    background: rgba(2, 6, 23, 0.55);
+    border: 1px solid rgba(103, 232, 249, 0.28);
+    border-radius: 8px;
+    font-family: var(--font-body);
+}
+
+.loja-filtros input[type="search"] {
+    width: 18rem;
+    min-width: 18rem;
+    max-width: 18rem;
+}
+
+.loja-filtros select {
+    width: 15rem;
+    min-width: 15rem;
+    padding-right: 2rem;
+}
+
+.loja-filtros input[type="search"]::placeholder,
+.loja-filtros select.is-placeholder {
+    color: rgba(226, 232, 240, 0.62);
+}
+
+.loja-contador {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.loja-vazio {
+    text-align: center;
+}
+
+.loja-limpar {
+    margin-top: 0.5rem;
+    min-height: 44px;
+    padding: 0.45rem 1.1rem;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: var(--color-verde-musgo);
+    color: var(--color-preto);
+    font-family: var(--font-subtitle);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.loja-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.jogo-card {
+    position: relative;
+    overflow: hidden;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(103, 232, 249, 0.18);
+    border-radius: var(--radius-card);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.jogo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-glow-marinho);
+}
+
+.jogo-card a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.jogo-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.jogo-card h2 {
+    margin: 1rem 0 0.4rem;
+    font-family: var(--font-subtitle);
+    font-size: 1.2rem;
+    color: var(--color-verde-marinho);
+}
+
+.jogo-card p {
+    margin: 0.25rem 0;
+}
+
+.jogo-card__preco {
+    color: var(--color-verde-musgo);
+    font-family: var(--font-subtitle);
+    font-weight: 600;
+}
+
+.jogo-card__favorito,
+.loja-favoritos {
+    min-height: 44px;
+    border: 1px solid rgba(103, 232, 249, 0.35);
+    border-radius: var(--radius-pill);
+    background: rgba(2, 6, 23, 0.55);
+    color: var(--color-verde-marinho);
+    font-family: var(--font-subtitle);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.jogo-card__favorito {
+    position: absolute;
+    top: 1.4rem;
+    right: 1.4rem;
+    z-index: 1;
+    width: 44px;
+    padding: 0;
+    font-size: 1.15rem;
+    line-height: 1;
+}
+
+.jogo-card__favorito::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: calc(100% + 0.45rem);
+    right: 0;
+    z-index: 2;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid rgba(103, 232, 249, 0.35);
+    border-radius: 8px;
+    background: rgba(2, 6, 23, 0.92);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.2;
+    white-space: nowrap;
+    box-shadow: var(--shadow-glow-marinho);
+    opacity: 0;
+    transform: translateY(4px);
+    pointer-events: none;
+    transition: opacity var(--transition), transform var(--transition);
+}
+
+.jogo-card__favorito:hover::after,
+.jogo-card__favorito:focus-visible::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.loja-visao {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+.loja-favoritos {
+    padding: 0.45rem 1rem;
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.loja-favoritos:hover {
+    border-color: rgba(103, 232, 249, 0.45);
+    color: var(--color-verde-marinho);
+    box-shadow: var(--shadow-glow-marinho);
+    transform: translateY(-2px);
+}
+
+.loja-favoritos.is-active:hover {
+    color: var(--color-preto);
+    border-color: transparent;
+    box-shadow: var(--shadow-glow-musgo);
+    transform: translateY(-3px);
+}
+
+.loja-favoritos:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-glow-marinho), 0 0 0 3px var(--color-preto), 0 0 0 5px var(--color-verde-musgo);
+}
+
+.loja-favoritos.is-active,
+.jogo-card__favorito[aria-pressed="true"] {
+    background: var(--color-verde-musgo);
+    color: var(--color-preto);
+    border-color: transparent;
+}
+
+@media (max-width: 980px) {
+    .loja-filtros {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 900px) {
+    .loja-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 560px) {
+    .loja-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .loja-filtros__busca {
+        width: 100%;
+    }
+
+    .loja-filtros input[type="search"] {
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+    }
+
+    .loja-filtros select {
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+    }
+
+    .loja-visao {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
 body.ig-page .form-card .btn-primary:disabled,
 body.ig-page .form-card .btn-primary[disabled] {
     background: rgba(34, 197, 94, 0.28) !important;

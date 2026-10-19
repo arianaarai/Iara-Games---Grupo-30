@@ -114,8 +114,10 @@ O que entrou nesta etapa:
 
 - A página da Loja deixou de ser o aviso "em construção".
 - O miolo da Loja agora é React. O topo, o rodapé e o visual continuam os do site.
-- Existem duas telas: a lista de jogos e a página de um jogo. Dá para ir de uma para a outra e voltar.
-- O catálogo, a busca e os dados do jogo ainda não estão nessa página. Isso entra em seguida.
+- A lista mostra os cards dos jogos. A busca por nome e o filtro por gênero ficam nos próprios campos, com os textos "Buscar jogo" e "Filtrar gênero".
+- Clicar em um card abre a página daquele jogo, com capa, preço, gênero, descrição e botão de favoritar.
+- O favorito fica salvo no navegador. O coração no card avisa, ao passar o mouse, se o jogo entra ou sai dos favoritos.
+- No canto da lista, **Todos os jogos** mostra o catálogo inteiro e **Favoritos** mostra só os jogos salvos.
 - Home, biblioteca, fórum, comunidade, login, suporte e cadastro de jogo continuam em HTML, como nas etapas anteriores.
 
 Para ver a Loja, na raiz do repositório:
@@ -195,7 +197,7 @@ Fluxo em **HTML e CSS**; formulários com `action="#"` (sem back-end), foco em s
 | Página | Arquivo | Conteúdo |
 | :--- | :--- | :--- |
 | Home | `index.html` | Hero, lançamentos, ofertas, destaques |
-| Loja | `pages/loja.html` | React: lista e página do jogo (catálogo ainda entra) |
+| Loja | `pages/loja.html` | React: lista, busca, filtro, favoritos e página do jogo |
 | Biblioteca | `pages/biblioteca.html` | Página mínima (stub) |
 | Fórum | `pages/forum.html` | Página mínima (stub) |
 | Comunidade | `pages/comunidade.html` | Salas de chat (protótipo front-end) |
@@ -224,9 +226,12 @@ A **home** e as páginas em `pages/` (shell **`ig-page`**) usam Bootstrap na nav
 ├── src/
 │   ├── main.jsx            # Entrada do React na Loja
 │   ├── App.jsx             # Rotas da lista e da página do jogo
+│   ├── favoritos.js        # Favoritos salvos no navegador
+│   ├── data/
+│   │   └── jogos.js        # Catálogo da Loja
 │   └── pages/
-│       ├── LojaPage.jsx    # Lista, ainda sem os cards
-│       └── JogoPage.jsx    # Página do jogo, ainda sem os dados
+│       ├── LojaPage.jsx    # Lista, busca, filtro e favoritos
+│       └── JogoPage.jsx    # Capa, preço, descrição e favorito
 ├── package.json
 ├── package-lock.json
 ├── vite.config.js
