@@ -129,8 +129,8 @@ npm run dev
 
 Abre em:
 
-- Loja: http://127.0.0.1:5173/pages/loja.html
-- Login: http://127.0.0.1:5173/pages/login.html
+- Loja: http://localhost:5173/pages/loja.html
+- Login: http://localhost:5173/pages/login.html
 
 O `python3 -m http.server` continua servindo a home e as páginas em HTML. A Loja e o Login precisam do `npm run dev`.
 
@@ -151,7 +151,7 @@ npm install
 npm run dev
 ```
 
-Abre em http://127.0.0.1:5173/pages/login.html.
+Abre em http://localhost:5173/pages/login.html.
 
 ## Pesquisa de plataformas
 
