@@ -1,6 +1,6 @@
 # Iara Games — O coração dos jogos brasileiros
 
-> **FIAP · Grupo 3** · Etapa 3 · Sprint 03 · **Etapa 4 · Redesign de Interação** · **Etapa 5 · Interatividade com JavaScript** · **Etapa 6 · Loja em React**  
+> **FIAP · Grupo 3** · Etapa 3 · Sprint 03 · **Etapa 4 · Redesign de Interação** · **Etapa 5 · Interatividade com JavaScript** · **Etapa 6 · Loja em React** · **Etapa 7 · Login em React**  
 > **Status:** Em desenvolvimento  
 > **Conceito:** Uma plataforma de e-commerce mística e moderna, focada em dar visibilidade aos jogos produzidos no Brasil.
 
@@ -118,7 +118,7 @@ O que entrou nesta etapa:
 - Clicar em um card abre a página daquele jogo, com capa, preço, gênero, descrição e botão de favoritar.
 - O favorito fica salvo no navegador. O coração no card avisa, ao passar o mouse, se o jogo entra ou sai dos favoritos.
 - No canto da lista, **Todos os jogos** mostra o catálogo inteiro e **Favoritos** mostra só os jogos salvos.
-- Home, biblioteca, fórum, comunidade, login, suporte e cadastro de jogo continuam em HTML, como nas etapas anteriores.
+- Home, biblioteca, fórum, comunidade, suporte e cadastro de jogo continuam em HTML, como nas etapas anteriores.
 
 Para ver a Loja, na raiz do repositório:
 
@@ -129,7 +129,20 @@ npm run dev
 
 Abre em http://127.0.0.1:5173/pages/loja.html.
 
-O `python3 -m http.server` continua servindo a home e as páginas em HTML. A Loja precisa do `npm run dev`.
+O `python3 -m http.server` continua servindo a home e as páginas em HTML. A Loja e o Login precisam do `npm run dev`.
+
+## Login em React (Etapa 7)
+
+O que entrou nesta etapa:
+
+- O Login continua na mesma página (`pages/login.html`). O miolo agora é React. O topo, o rodapé e o visual continuam os do site.
+- Os dois blocos seguem na tela: **Já tenho conta** e **Criar conta**.
+- A página já recebe usuário e senha e chama a função de autenticação. A API DummyJSON ainda entra na parte das outras pessoas do grupo.
+- **Criar conta** permanece só na interface. A DummyJSON valida usuários de teste e não cria conta real nesta etapa. O aviso de senha com menos de 8 caracteres continua aparecendo na hora.
+
+Para ver o Login, com o `npm run dev` já rodando:
+
+Abre em http://127.0.0.1:5173/pages/login.html.
 
 ## Pesquisa de plataformas
 
@@ -201,11 +214,11 @@ Fluxo em **HTML e CSS**; formulários com `action="#"` (sem back-end), foco em s
 | Biblioteca | `pages/biblioteca.html` | Página mínima (stub) |
 | Fórum | `pages/forum.html` | Página mínima (stub) |
 | Comunidade | `pages/comunidade.html` | Salas de chat (protótipo front-end) |
-| Login | `pages/login.html` | Entrar e criar conta (dois blocos no mesmo fluxo) |
+| Login | `pages/login.html` | React: entrar e criar conta (dois blocos no mesmo fluxo) |
 | Suporte | `pages/suporte.html` | Feedback e contato para jogadores/visitantes |
 | Cadastro de jogo | `pages/cadastro-jogo.html` | Envio de dados do jogo por estúdios/desenvolvedores |
 
-A **home** e as páginas em `pages/` (shell **`ig-page`**) usam Bootstrap na navegação e apontam para essas rotas. A Loja abre em React. Biblioteca e Fórum seguem como páginas mínimas até a implementação completa.
+A **home** e as páginas em `pages/` (shell **`ig-page`**) usam Bootstrap na navegação e apontam para essas rotas. A Loja e o Login abrem em React. Biblioteca e Fórum seguem como páginas mínimas até a implementação completa.
 
 > **Entrega FIAP (Etapa 3):** persona, ESG, justificativas de UX/UI e evolução do protótipo ao longo das sprints devem constar no **PDF** enviado na plataforma; este README resume o escopo técnico do repositório na **Sprint 03**.
 
@@ -218,20 +231,31 @@ A **home** e as páginas em `pages/` (shell **`ig-page`**) usam Bootstrap na nav
 │   ├── css/
 │   │   └── style.css       # Estilos globais e design tokens
 │   ├── js/
-│   │   ├── login.js         # Validação de senha (login)
+│   │   ├── login.js         # Validação de senha (etapa 5; o Login atual está em React)
 │   │   ├── suporte.js       # Contador, validação e envio (suporte)
 │   │   └── cadastro-jogo.js # Campos condicionais, preview e envio
 │   ├── images/             # Imagens do hero, capas dos cards, etc.
 │   └── videos/             # Vídeos de apoio (Fase 3); uso opcional no HTML/CSS
 ├── src/
 │   ├── main.jsx            # Entrada do React na Loja
+│   ├── login-main.jsx      # Entrada do React no Login
 │   ├── App.jsx             # Rotas da lista e da página do jogo
 │   ├── favoritos.js        # Favoritos salvos no navegador
 │   ├── data/
 │   │   └── jogos.js        # Catálogo da Loja
+│   ├── components/
+│   │   ├── LoginForm.jsx   # Formulário de entrar
+│   │   └── LoginStatus.jsx # Mensagem de sessão ou erro
+│   ├── services/
+│   │   └── authService.js  # Consulta da API de login
+│   ├── types/
+│   │   └── auth.js         # Contratos de usuário e sessão
+│   ├── styles/
+│   │   └── login.css       # Estilos do Login
 │   └── pages/
 │       ├── LojaPage.jsx    # Lista, busca, filtro e favoritos
-│       └── JogoPage.jsx    # Capa, preço, descrição e favorito
+│       ├── JogoPage.jsx    # Capa, preço, descrição e favorito
+│       └── LoginPage.jsx   # Login e criar conta
 ├── package.json
 ├── package-lock.json
 ├── vite.config.js
@@ -240,7 +264,7 @@ A **home** e as páginas em `pages/` (shell **`ig-page`**) usam Bootstrap na nav
 │   ├── biblioteca.html     # Stub / em evolução
 │   ├── forum.html          # Stub / em evolução
 │   ├── comunidade.html      # Chat por jogo / conversa aberta (protótipo)
-│   ├── login.html          # Entrar / criar conta
+│   ├── login.html          # Casca do Login; o miolo é React
 │   ├── suporte.html        # Feedback com JS (contador, validação, envio)
 │   └── cadastro-jogo.html  # Cadastro com JS (campos condicionais e preview)
 ├── redesign/
