@@ -6,7 +6,10 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      input: resolve(import.meta.dirname, 'pages/loja.html'),
+      input: {
+        loja: resolve(import.meta.dirname, 'pages/loja.html'),
+        login: resolve(import.meta.dirname, 'pages/login.html'),
+      },
     },
   },
 })

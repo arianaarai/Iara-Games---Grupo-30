@@ -1,0 +1,24 @@
+.login-status {
+    margin: 0 0 1.25rem;
+    text-align: center;
+    color: var(--ig-text);
+}
+
+.login-status--erro {
+    color: #ff6b6b;
+}
+
+.login-status--ok {
+    color: var(--ig-green);
+}
+
+.login-hint {
+    margin: 0 0 1.5rem;
+    text-align: center;
+    color: var(--ig-muted);
+}
+
+.cadastro-senha-aviso {
+    display: block;
+    margin-top: 5px;
+}
