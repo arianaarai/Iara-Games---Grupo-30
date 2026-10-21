@@ -137,10 +137,16 @@ O que entrou nesta etapa:
 
 - O Login continua na mesma página (`pages/login.html`). O miolo agora é React. O topo, o rodapé e o visual continuam os do site.
 - Os dois blocos seguem na tela: **Já tenho conta** e **Criar conta**.
-- A página já recebe usuário e senha e chama a função de autenticação. A API DummyJSON ainda entra na parte das outras pessoas do grupo.
+- No bloco **Já tenho conta**, o campo passou de e-mail para **usuário**. A DummyJSON valida usuário e senha, não e-mail.
+- A página já recebe usuário e senha e chama a função de autenticação. A API prevista é `https://dummyjson.com/auth/login`. Ela ainda entra na parte das outras pessoas do grupo.
 - **Criar conta** permanece só na interface. A DummyJSON valida usuários de teste e não cria conta real nesta etapa. O aviso de senha com menos de 8 caracteres continua aparecendo na hora.
 
-Para ver o Login, com o `npm run dev` já rodando:
+Para ver o Login, na raiz do repositório:
+
+```bash
+npm install
+npm run dev
+```
 
 Abre em http://127.0.0.1:5173/pages/login.html.
 
