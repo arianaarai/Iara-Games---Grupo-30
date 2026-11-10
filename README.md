@@ -141,7 +141,8 @@ O que entrou nesta etapa:
 - O Login continua na mesma página (`pages/login.html`). O miolo agora é React. O topo, o rodapé e o visual continuam os do site.
 - Os dois blocos seguem na tela: **Já tenho conta** e **Criar conta**.
 - No bloco **Já tenho conta**, o campo passou de e-mail para **usuário**. A DummyJSON valida usuário e senha, não e-mail.
-- A página já recebe usuário e senha e chama a função de autenticação. A API prevista é `https://dummyjson.com/auth/login`. Ela ainda entra na parte das outras pessoas do grupo.
+- A página recebe usuário e senha e valida na API `https://dummyjson.com/auth/login` (DummyJSON). Conta de teste: usuário `emilys`, senha `emilyspass`.
+- Em caso de sucesso, a tela mostra nome e e-mail. Em caso de falha, mostra mensagem de erro sem quebrar a página.
 - **Criar conta** permanece só na interface. A DummyJSON valida usuários de teste e não cria conta real nesta etapa. O aviso de senha com menos de 8 caracteres continua aparecendo na hora.
 
 Para ver o Login, na raiz do repositório:
