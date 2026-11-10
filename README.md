@@ -6,6 +6,44 @@
 
 A Iara Games não é apenas uma loja; é uma imersão nas águas do desenvolvimento nacional. O projeto utiliza uma estética *dark mode* profunda, inspirada nas lendas amazônicas, equilibrada com CSS moderno, **Bootstrap na casca** (home e páginas internas) e identidade visual alinhada ao manual da marca (evolução a partir da Etapa 2).
 
+## Visão geral (comece por aqui)
+
+O site mistura **HTML estático** (home, suporte, cadastro de jogo, etc.) com **duas páginas em React** (Loja e Login). Topo, menu e rodapé continuam iguais; só o **miolo** da Loja e do Login é React.
+
+| O que | URL / arquivo | Como abrir |
+| :--- | :--- | :--- |
+| **Loja (React)** | `pages/loja.html` | `npm run dev` → http://localhost:5173/pages/loja.html |
+| **Login (React)** | `pages/login.html` | `npm run dev` → http://localhost:5173/pages/login.html |
+| **Home e demais páginas** | `index.html`, `pages/*.html` | `python3 -m http.server 8080` **ou** `npm run dev` |
+
+**Deploy (Vercel):**
+
+- Loja: https://iara-games-grupo-30.vercel.app/pages/loja.html  
+- Login: https://iara-games-grupo-30.vercel.app/pages/login.html  
+
+### Onde está o React
+
+| Página | HTML (casca) | Entrada Vite | Página / app React | Componentes e dados |
+| :--- | :--- | :--- | :--- | :--- |
+| Loja | `pages/loja.html` | `src/main.jsx` | `src/App.jsx`, `src/pages/LojaPage.jsx`, `src/pages/JogoPage.jsx` | `src/data/jogos.js`, `src/favoritos.js` |
+| Login | `pages/login.html` | `src/login-main.jsx` | `src/pages/LoginPage.jsx` | `src/components/LoginForm.jsx`, `src/components/LoginStatus.jsx`, `src/services/authService.js` |
+
+### Rodar o React localmente
+
+Na raiz do repositório:
+
+```bash
+npm install
+npm run dev
+```
+
+Use **http://localhost:5173** (não `127.0.0.1` se o dev server não responder).  
+Para gerar o build de produção: `npm run build` e depois `npm run preview`.
+
+O `python3 -m http.server` serve a home e páginas só em HTML, mas **não** monta a Loja nem o Login em React — para essas duas, use sempre o Vite.
+
+As seções abaixo detalham cada etapa da FIAP (4 a 7) e o restante do projeto.
+
 ## Redesign de Interação (Etapa 4)
 
 Atividade **Redesign de Interação: da análise ao protótipo** — análise crítica da home original e protótipo reformulado no mesmo repositório.
@@ -51,7 +89,7 @@ Arquivos do redesign: `redesign/index.html`, `redesign/redesign.css`, `redesign/
 Na etapa anterior o grupo analisou problemas de interação e entregou o protótipo em HTML e CSS (`redesign/`, `pages/login.html`, `pages/suporte.html`). Nesta etapa o mesmo repositório foi evoluído: as páginas já existentes ganharam comportamentos dinâmicos por JavaScript externo, sem refazer o visual.
 
 - **Home (`redesign/`)** — a busca e os filtros, que na Etapa 4 eram proposta de interação, passaram a filtrar os cards de fato.
-- **Login** — o formulário de criar conta agora avisa na hora se a senha tem menos de 8 caracteres.
+- **Login (histórico, Etapa 5)** — validação de senha em `assets/js/login.js`. Na **Etapa 7** o Login passou para React; a mesma regra dos 8 caracteres ficou em `LoginPage.jsx`.
 - **Suporte** — o contato, que era só estático, agora valida campos, conta caracteres, controla o botão de envio e confirma o feedback na tela.
 - **Cadastro de jogo** — o formulário longo agora mostra campos conforme o status, valida os dados e exibe um resumo antes do envio.
 
@@ -70,16 +108,9 @@ A busca e os filtros foram implementados com JavaScript externo em `redesign/red
 
 **Arquivo:** `redesign/redesign.js`
 
-### Validação de senha mínima
+### Validação de senha mínima (Etapa 5 — referência histórica)
 
-Permitir que o usuário saiba imediatamente se a senha atende ao requisito mínimo de 8 caracteres durante o preenchimento do formulário.
-
-A validação foi implementada com JavaScript externo em `assets/js/login.js`, utilizando o evento `input` para verificar a quantidade de caracteres.
-
-- Menos de 8 caracteres: mensagem de erro em vermelho.
-- 8 ou mais caracteres: mensagem de sucesso em verde.
-
-**Arquivo:** `assets/js/login.js`
+Na Etapa 5 a validação ficou em `assets/js/login.js`. Hoje o Login é React (`src/pages/LoginPage.jsx`); o arquivo `login.js` permanece no repositório como registro da etapa anterior.
 
 ### Formulário de suporte
 
@@ -110,49 +141,15 @@ A interatividade foi implementada com JavaScript externo em `assets/js/cadastro-
 
 ## Loja em React (Etapa 6)
 
-O que entrou nesta etapa:
-
-- A página da Loja deixou de ser o aviso "em construção".
-- O miolo da Loja agora é React. O topo, o rodapé e o visual continuam os do site.
-- A lista mostra os cards dos jogos. A busca por nome e o filtro por gênero ficam nos próprios campos, com os textos "Buscar jogo" e "Filtrar gênero".
-- Clicar em um card abre a página daquele jogo, com capa, preço, gênero, descrição e botão de favoritar.
-- O favorito fica salvo no navegador. O coração no card avisa, ao passar o mouse, se o jogo entra ou sai dos favoritos.
-- No canto da lista, **Todos os jogos** mostra o catálogo inteiro e **Favoritos** mostra só os jogos salvos.
-- Home, biblioteca, fórum, comunidade, suporte e cadastro de jogo continuam em HTML, como nas etapas anteriores.
-
-Para ver a Loja, na raiz do repositório:
-
-```bash
-npm install
-npm run dev
-```
-
-Abre em:
-
-- Loja: http://localhost:5173/pages/loja.html
-- Login: http://localhost:5173/pages/login.html
-
-O `python3 -m http.server` continua servindo a home e as páginas em HTML. A Loja e o Login precisam do `npm run dev`.
+- O miolo de `pages/loja.html` é React (lista, busca, filtro por gênero, favoritos no navegador, página do jogo).
+- Ver **[Visão geral](#visão-geral-comece-por-aqui)** para URLs, `npm run dev` e tabela de arquivos.
 
 ## Login em React (Etapa 7)
 
-O que entrou nesta etapa:
-
-- O Login continua na mesma página (`pages/login.html`). O miolo agora é React. O topo, o rodapé e o visual continuam os do site.
-- Os dois blocos seguem na tela: **Já tenho conta** e **Criar conta**.
-- No bloco **Já tenho conta**, o campo passou de e-mail para **usuário**. A DummyJSON valida usuário e senha, não e-mail.
-- A página recebe usuário e senha e valida na API `https://dummyjson.com/auth/login` (DummyJSON). Conta de teste: usuário `emilys`, senha `emilyspass`.
-- Em caso de sucesso, a tela mostra nome e e-mail. Em caso de falha, mostra mensagem de erro sem quebrar a página.
-- **Criar conta** permanece só na interface. A DummyJSON valida usuários de teste e não cria conta real nesta etapa. O aviso de senha com menos de 8 caracteres continua aparecendo na hora.
-
-Para ver o Login, na raiz do repositório:
-
-```bash
-npm install
-npm run dev
-```
-
-Abre em http://localhost:5173/pages/login.html.
+- O miolo de `pages/login.html` é React, com **Já tenho conta** e **Criar conta** na mesma tela.
+- **Entrar:** usuário + senha na API [DummyJSON](https://dummyjson.com/docs/auth) — `POST https://dummyjson.com/auth/login`. Conta de teste: `emilys` / `emilyspass`. Sucesso mostra nome e e-mail (`LoginStatus.jsx`); erro mostra mensagem sem quebrar a página.
+- **Criar conta:** só interface (não grava na API). Validação de senha mínima (8 caracteres) no próprio React.
+- Ver **[Visão geral](#visão-geral-comece-por-aqui)** para deploy, `npm run dev` e tabela de arquivos.
 
 ## Pesquisa de plataformas
 
